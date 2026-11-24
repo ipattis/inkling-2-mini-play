@@ -1,0 +1,1098 @@
+[
+  {
+    "id": 1,
+    "name": "Will Quist",
+    "city": "Berlin",
+    "signup": "2022-06-11",
+    "orders": 75,
+    "spend": 3865.53
+  },
+  {
+    "id": 2,
+    "name": "Paul Dahl",
+    "city": "Seville",
+    "signup": "2022-04-15",
+    "orders": 53,
+    "spend": 4403.12
+  },
+  {
+    "id": 3,
+    "name": "Noah Berger",
+    "city": "Oslo",
+    "signup": "2019-12-10",
+    "orders": 12,
+    "spend": 372.85
+  },
+  {
+    "id": 4,
+    "name": "Grace Garcia",
+    "city": "Bergen",
+    "signup": "2021-02-07",
+    "orders": 111,
+    "spend": 5992.77
+  },
+  {
+    "id": 5,
+    "name": "Ava Costa",
+    "city": "Bern",
+    "signup": "2022-04-17",
+    "orders": 84,
+    "spend": 10126.56
+  },
+  {
+    "id": 6,
+    "name": "Uma Ito",
+    "city": "Kraków",
+    "signup": "2021-07-13",
+    "orders": 70,
+    "spend": 5764.59
+  },
+  {
+    "id": 7,
+    "name": "Finn Berger",
+    "city": "Melbourne",
+    "signup": "2024-05-06",
+    "orders": 89,
+    "spend": 5550.33
+  },
+  {
+    "id": 8,
+    "name": "Ella Quist",
+    "city": "Kraków",
+    "signup": "2026-02-16",
+    "orders": 39,
+    "spend": 1639.43
+  },
+  {
+    "id": 9,
+    "name": "Zoe Klein",
+    "city": "Lisbon",
+    "signup": "2024-12-02",
+    "orders": 9,
+    "spend": 911.89
+  },
+  {
+    "id": 10,
+    "name": "Ella Berger",
+    "city": "Bern",
+    "signup": "2026-08-25",
+    "orders": 65,
+    "spend": 7086.17
+  },
+  {
+    "id": 11,
+    "name": "Yara Jensen",
+    "city": "Bern",
+    "signup": "2023-07-06",
+    "orders": 42,
+    "spend": 1493.4
+  },
+  {
+    "id": 12,
+    "name": "Ava Tanaka",
+    "city": "Bern",
+    "signup": "2022-03-10",
+    "orders": 126,
+    "spend": 1234.5
+  },
+  {
+    "id": 13,
+    "name": "Sam Moreau",
+    "city": "Toronto",
+    "signup": "2026-09-17",
+    "orders": 61,
+    "spend": 2023.28
+  },
+  {
+    "id": 14,
+    "name": "Uma Fischer",
+    "city": "Osaka",
+    "signup": "2026-07-01",
+    "orders": 2,
+    "spend": 231.89
+  },
+  {
+    "id": 15,
+    "name": "Ruby Dahl",
+    "city": "Osaka",
+    "signup": "2020-06-11",
+    "orders": 87,
+    "spend": 10320.72
+  },
+  {
+    "id": 16,
+    "name": "Kai Klein",
+    "city": "Seville",
+    "signup": "2023-10-10",
+    "orders": 98,
+    "spend": 5357.03
+  },
+  {
+    "id": 17,
+    "name": "Chloe Costa",
+    "city": "Lisbon",
+    "signup": "2024-02-14",
+    "orders": 32,
+    "spend": 3511.89
+  },
+  {
+    "id": 18,
+    "name": "Dan Garcia",
+    "city": "Lyon",
+    "signup": "2019-12-17",
+    "orders": 5,
+    "spend": 552.87
+  },
+  {
+    "id": 19,
+    "name": "Noah Lee",
+    "city": "Melbourne",
+    "signup": "2020-07-15",
+    "orders": 12,
+    "spend": 102.87
+  },
+  {
+    "id": 20,
+    "name": "Ella Adler",
+    "city": "Seville",
+    "signup": "2023-03-06",
+    "orders": 103,
+    "spend": 2631.87
+  },
+  {
+    "id": 21,
+    "name": "Mia Quist",
+    "city": "Lyon",
+    "signup": "2019-11-27",
+    "orders": 63,
+    "spend": 5908.58
+  },
+  {
+    "id": 22,
+    "name": "Isla Garcia",
+    "city": "Berlin",
+    "signup": "2022-04-12",
+    "orders": 36,
+    "spend": 2489.92
+  },
+  {
+    "id": 23,
+    "name": "quinn fischer",
+    "city": "Kraków",
+    "signup": "2026-10-07",
+    "orders": 110,
+    "spend": 2836.85
+  },
+  {
+    "id": 24,
+    "name": "Will Adler",
+    "city": "Austin",
+    "signup": "2026-07-21",
+    "orders": 114,
+    "spend": 11196.46
+  },
+  {
+    "id": 25,
+    "name": "Jack Lee",
+    "city": "Hamburg",
+    "signup": "2022-06-25",
+    "orders": 84,
+    "spend": 659.57
+  },
+  {
+    "id": 26,
+    "name": "Noah Dahl",
+    "city": "Bern",
+    "signup": "2021-05-05",
+    "orders": 81,
+    "spend": 5852.14
+  },
+  {
+    "id": 27,
+    "name": "Vic Tanaka",
+    "city": "Toronto",
+    "signup": "2021-11-26",
+    "orders": 3,
+    "spend": 342.27
+  },
+  {
+    "id": 28,
+    "name": "Yara Evans",
+    "city": "Berlin",
+    "signup": "2024-02-13",
+    "orders": 35,
+    "spend": 1615.82
+  },
+  {
+    "id": 29,
+    "name": "Sam Rossi",
+    "city": "Toronto",
+    "signup": "2022-07-06",
+    "orders": 25,
+    "spend": 1282.57
+  },
+  {
+    "id": 30,
+    "name": "Tara Lee",
+    "city": "Kraków",
+    "signup": "2021-09-28",
+    "orders": 53,
+    "spend": 797.13
+  },
+  {
+    "id": 31,
+    "name": "Noah Dahl",
+    "city": "Lisbon",
+    "signup": "2021-08-21",
+    "orders": 98,
+    "spend": 9545.62
+  },
+  {
+    "id": 32,
+    "name": "Dan Quist",
+    "city": "Toronto",
+    "signup": "2023-11-01",
+    "orders": 141,
+    "spend": 13381.6
+  },
+  {
+    "id": 33,
+    "name": "Yara Tanaka",
+    "city": "Osaka",
+    "signup": "2022-06-02",
+    "orders": 127,
+    "spend": 3297.86
+  },
+  {
+    "id": 34,
+    "name": "Paul Petrov",
+    "city": "Hamburg",
+    "signup": "2020-05-20",
+    "orders": 3,
+    "spend": 236.33
+  },
+  {
+    "id": 35,
+    "name": "Finn Novak",
+    "city": "Cumberland",
+    "signup": "2021-07-26",
+    "orders": 75,
+    "spend": 4235.56
+  },
+  {
+    "id": 36,
+    "name": "Grace Berger",
+    "city": "Lyon",
+    "signup": "2020-05-13",
+    "orders": 8,
+    "spend": 141.1
+  },
+  {
+    "id": 37,
+    "name": "Kai Berger",
+    "city": "Osaka",
+    "signup": "2025-06-06",
+    "orders": 132,
+    "spend": 849.46
+  },
+  {
+    "id": 38,
+    "name": "Jack Olsen",
+    "city": "Hamburg",
+    "signup": "2019-04-21",
+    "orders": 80,
+    "spend": 1980.4
+  },
+  {
+    "id": 39,
+    "name": "Jack Moreau",
+    "city": "Cumberland",
+    "signup": "2021-03-20",
+    "orders": 116,
+    "spend": 655.47
+  },
+  {
+    "id": 40,
+    "name": "Will Petrov",
+    "city": "Osaka",
+    "signup": "2019-08-22",
+    "orders": 117,
+    "spend": 4891.3
+  },
+  {
+    "id": 41,
+    "name": "Olive Berger",
+    "city": "Lyon",
+    "signup": "2019-04-27",
+    "orders": 42,
+    "spend": 751.9
+  },
+  {
+    "id": 42,
+    "name": "Finn Klein",
+    "city": "Bergen",
+    "signup": "2020-11-08",
+    "orders": 124,
+    "spend": 2319.8
+  },
+  {
+    "id": 43,
+    "name": "Hugo Dahl",
+    "city": "Melbourne",
+    "signup": "2023-10-15",
+    "orders": 26,
+    "spend": 2647.98
+  },
+  {
+    "id": 44,
+    "name": "Jack Olsen",
+    "city": "Austin",
+    "signup": "2024-01-03",
+    "orders": 123,
+    "spend": 3475.78
+  },
+  {
+    "id": 45,
+    "name": "Mia Novak",
+    "city": "Austin",
+    "signup": "2020-02-17",
+    "orders": 2,
+    "spend": 14.47
+  },
+  {
+    "id": 46,
+    "name": "paul adler",
+    "city": "Cumberland",
+    "signup": "2021-03-01",
+    "orders": 76,
+    "spend": 1880.93
+  },
+  {
+    "id": 47,
+    "name": "Will Jensen",
+    "city": "Osaka",
+    "signup": "2026-10-11",
+    "orders": 7,
+    "spend": 598.28
+  },
+  {
+    "id": 48,
+    "name": "Mia Adler",
+    "city": "Bergen",
+    "signup": "2026-03-24",
+    "orders": 12,
+    "spend": 764.28
+  },
+  {
+    "id": 49,
+    "name": "Chloe Novak",
+    "city": "Kraków",
+    "signup": "2020-10-04",
+    "orders": 91,
+    "spend": 2593.77
+  },
+  {
+    "id": 50,
+    "name": "Will Silva",
+    "city": "Berlin",
+    "signup": "2019-08-19",
+    "orders": 147,
+    "spend": 14839.68
+  },
+  {
+    "id": 51,
+    "name": "Sam Tanaka",
+    "city": "Lyon",
+    "signup": "2025-08-28",
+    "orders": 2,
+    "spend": 238.11
+  },
+  {
+    "id": 52,
+    "name": "Quinn Petrov",
+    "city": "Lyon",
+    "signup": "2019-03-04",
+    "orders": 10,
+    "spend": 152.8
+  },
+  {
+    "id": 53,
+    "name": "Tara Quist",
+    "city": "Toronto",
+    "signup": "2023-11-11",
+    "orders": 112,
+    "spend": 6323.02
+  },
+  {
+    "id": 54,
+    "name": "Finn Quist",
+    "city": "Melbourne",
+    "signup": "2023-03-24",
+    "orders": 6,
+    "spend": 302.94
+  },
+  {
+    "id": 55,
+    "name": "Isla Quist",
+    "city": "Osaka",
+    "signup": "2020-02-28",
+    "orders": 47,
+    "spend": 690.76
+  },
+  {
+    "id": 56,
+    "name": "Paul Klein",
+    "city": "Berlin",
+    "signup": "2026-04-18",
+    "orders": 19,
+    "spend": 471.98
+  },
+  {
+    "id": 57,
+    "name": "Quinn Lee",
+    "city": "Bern",
+    "signup": "2024-09-21",
+    "orders": 114,
+    "spend": 1629.05
+  },
+  {
+    "id": 58,
+    "name": "Kai Hansen",
+    "city": "Austin",
+    "signup": "2019-07-25",
+    "orders": 148,
+    "spend": 13192.03
+  },
+  {
+    "id": 59,
+    "name": "Kai Berger",
+    "city": "Hamburg",
+    "signup": "2024-03-11",
+    "orders": 126,
+    "spend": 2177.91
+  },
+  {
+    "id": 60,
+    "name": "Sam Quist",
+    "city": "Lyon",
+    "signup": "2022-10-22",
+    "orders": 120,
+    "spend": 1541.47
+  },
+  {
+    "id": 61,
+    "name": "Ella Jensen",
+    "city": "Austin",
+    "signup": "2019-08-14",
+    "orders": 81,
+    "spend": 3752.48
+  },
+  {
+    "id": 62,
+    "name": "Quinn Lee",
+    "city": "Oslo",
+    "signup": "2026-06-09",
+    "orders": 109,
+    "spend": 9887.67
+  },
+  {
+    "id": 63,
+    "name": "Chloe Silva",
+    "city": "Oslo",
+    "signup": "2021-08-18",
+    "orders": 8,
+    "spend": 873.75
+  },
+  {
+    "id": 64,
+    "name": "Noah Dahl",
+    "city": "Berlin",
+    "signup": "2025-01-20",
+    "orders": 136,
+    "spend": 1746.46
+  },
+  {
+    "id": 65,
+    "name": "Ella Jensen",
+    "city": "Berlin",
+    "signup": "2023-02-25",
+    "orders": 19,
+    "spend": 1433.05
+  },
+  {
+    "id": 66,
+    "name": "Vic Novak",
+    "city": "Bergen",
+    "signup": "2021-11-20",
+    "orders": 66,
+    "spend": 1092.8
+  },
+  {
+    "id": 67,
+    "name": "Dan Lee",
+    "city": "Bergen",
+    "signup": "2021-04-16",
+    "orders": 113,
+    "spend": 5177.13
+  },
+  {
+    "id": 68,
+    "name": "Ruby Ito",
+    "city": "Toronto",
+    "signup": "2026-12-24",
+    "orders": 67,
+    "spend": 5206.93
+  },
+  {
+    "id": 69,
+    "name": "will olsen",
+    "city": "Seville",
+    "signup": "2023-05-06",
+    "orders": 124,
+    "spend": 4286.05
+  },
+  {
+    "id": 70,
+    "name": "Ben Silva",
+    "city": "Seville",
+    "signup": "2019-11-13",
+    "orders": 43,
+    "spend": 731.45
+  },
+  {
+    "id": 71,
+    "name": "Jack Ito",
+    "city": "Berlin",
+    "signup": "2020-04-24",
+    "orders": 91,
+    "spend": 10304.19
+  },
+  {
+    "id": 72,
+    "name": "Finn Lee",
+    "city": "Austin",
+    "signup": "2022-02-19",
+    "orders": 9,
+    "spend": 1234.5
+  },
+  {
+    "id": 73,
+    "name": "Lena Petrov",
+    "city": "Osaka",
+    "signup": "2025-09-19",
+    "orders": 37,
+    "spend": 4193.22
+  },
+  {
+    "id": 74,
+    "name": "Sam Jensen",
+    "city": "Lyon",
+    "signup": "2024-01-27",
+    "orders": 80,
+    "spend": 5481.11
+  },
+  {
+    "id": 75,
+    "name": "Lena Costa",
+    "city": "Melbourne",
+    "signup": "2021-11-05",
+    "orders": 60,
+    "spend": 3114.31
+  },
+  {
+    "id": 76,
+    "name": "Vic Hansen",
+    "city": "Osaka",
+    "signup": "2023-09-01",
+    "orders": 80,
+    "spend": 6779.1
+  },
+  {
+    "id": 77,
+    "name": "Hugo Evans",
+    "city": "Bern",
+    "signup": "2026-07-22",
+    "orders": 18,
+    "spend": 648.54
+  },
+  {
+    "id": 78,
+    "name": "Tara Rossi",
+    "city": "Austin",
+    "signup": "2024-01-05",
+    "orders": 35,
+    "spend": 939.02
+  },
+  {
+    "id": 79,
+    "name": "Finn Jensen",
+    "city": "Toronto",
+    "signup": "2020-08-03",
+    "orders": 92,
+    "spend": 4624.48
+  },
+  {
+    "id": 80,
+    "name": "Quinn Rossi",
+    "city": "Toronto",
+    "signup": "2026-12-11",
+    "orders": 122,
+    "spend": 7836.56
+  },
+  {
+    "id": 81,
+    "name": "Grace Hansen",
+    "city": "Kraków",
+    "signup": "2024-03-14",
+    "orders": 8,
+    "spend": 402.71
+  },
+  {
+    "id": 82,
+    "name": "Mia Petrov",
+    "city": "Cumberland",
+    "signup": "2021-02-12",
+    "orders": 123,
+    "spend": 7520.77
+  },
+  {
+    "id": 83,
+    "name": "Sam Garcia",
+    "city": "Cumberland",
+    "signup": "2025-03-01",
+    "orders": 50,
+    "spend": 5971.04
+  },
+  {
+    "id": 84,
+    "name": "Zoe Hansen",
+    "city": "Melbourne",
+    "signup": "2022-08-25",
+    "orders": 115,
+    "spend": 3945.16
+  },
+  {
+    "id": 85,
+    "name": "Uma Jensen",
+    "city": "Lisbon",
+    "signup": "2021-11-09",
+    "orders": 114,
+    "spend": 10602.39
+  },
+  {
+    "id": 86,
+    "name": "Mia Jensen",
+    "city": "Seville",
+    "signup": "2019-08-15",
+    "orders": 4,
+    "spend": 208.22
+  },
+  {
+    "id": 87,
+    "name": "Lena Moreau",
+    "city": "Toronto",
+    "signup": "2019-02-24",
+    "orders": 94,
+    "spend": 10599.92
+  },
+  {
+    "id": 88,
+    "name": "Kai Klein",
+    "city": "Lisbon",
+    "signup": "2020-12-18",
+    "orders": 148,
+    "spend": 9592.82
+  },
+  {
+    "id": 89,
+    "name": "Vic Costa",
+    "city": "Lisbon",
+    "signup": "2021-03-24",
+    "orders": 55,
+    "spend": 2257.66
+  },
+  {
+    "id": 90,
+    "name": "Ben Evans",
+    "city": "Hamburg",
+    "signup": "2021-09-22",
+    "orders": 9,
+    "spend": 1059.16
+  },
+  {
+    "id": 91,
+    "name": "Finn Klein",
+    "city": "Osaka",
+    "signup": "2024-04-18",
+    "orders": 42,
+    "spend": 5253.73
+  },
+  {
+    "id": 92,
+    "name": "hugo garcia",
+    "city": "Kraków",
+    "signup": "2023-11-24",
+    "orders": 29,
+    "spend": 361.94
+  },
+  {
+    "id": 93,
+    "name": "Kai Klein",
+    "city": "Austin",
+    "signup": "2022-07-21",
+    "orders": 24,
+    "spend": 213.16
+  },
+  {
+    "id": 94,
+    "name": "Uma Olsen",
+    "city": "Oslo",
+    "signup": "2019-04-05",
+    "orders": 101,
+    "spend": 9858.27
+  },
+  {
+    "id": 95,
+    "name": "Zoe Quist",
+    "city": "Kraków",
+    "signup": "2025-06-23",
+    "orders": 130,
+    "spend": 11282.55
+  },
+  {
+    "id": 96,
+    "name": "Ava Berger",
+    "city": "Bergen",
+    "signup": "2022-09-01",
+    "orders": 140,
+    "spend": 5541.62
+  },
+  {
+    "id": 97,
+    "name": "Finn Petrov",
+    "city": "Oslo",
+    "signup": "2019-04-19",
+    "orders": 75,
+    "spend": 7224.88
+  },
+  {
+    "id": 98,
+    "name": "Ella Fischer",
+    "city": "Austin",
+    "signup": "2026-10-13",
+    "orders": 116,
+    "spend": 4750.7
+  },
+  {
+    "id": 99,
+    "name": "Paul Petrov",
+    "city": "Bergen",
+    "signup": "2023-01-16",
+    "orders": 2,
+    "spend": 141.57
+  },
+  {
+    "id": 100,
+    "name": "Hugo Silva",
+    "city": "Toronto",
+    "signup": "2025-08-22",
+    "orders": 146,
+    "spend": 1439.47
+  },
+  {
+    "id": 101,
+    "name": "Kai Jensen",
+    "city": "Kraków",
+    "signup": "2022-10-27",
+    "orders": 3,
+    "spend": 203.44
+  },
+  {
+    "id": 102,
+    "name": "Vic Quist",
+    "city": "Oslo",
+    "signup": "2025-05-10",
+    "orders": 80,
+    "spend": 6121.43
+  },
+  {
+    "id": 103,
+    "name": "Isla Rossi",
+    "city": "Seville",
+    "signup": "2021-06-12",
+    "orders": 119,
+    "spend": 2806.61
+  },
+  {
+    "id": 104,
+    "name": "Isla Novak",
+    "city": "Cumberland",
+    "signup": "2024-01-07",
+    "orders": 52,
+    "spend": 1225.65
+  },
+  {
+    "id": 105,
+    "name": "Will Adler",
+    "city": "Kraków",
+    "signup": "2025-12-12",
+    "orders": 17,
+    "spend": 1173.2
+  },
+  {
+    "id": 106,
+    "name": "Uma Adler",
+    "city": "Austin",
+    "signup": "2026-06-01",
+    "orders": 120,
+    "spend": 8911.84
+  },
+  {
+    "id": 107,
+    "name": "Quinn Klein",
+    "city": "Lyon",
+    "signup": "2023-09-08",
+    "orders": 134,
+    "spend": 15830.26
+  },
+  {
+    "id": 108,
+    "name": "Chloe Dahl",
+    "city": "Toronto",
+    "signup": "2026-11-11",
+    "orders": 4,
+    "spend": 83.31
+  },
+  {
+    "id": 109,
+    "name": "Olive Olsen",
+    "city": "Osaka",
+    "signup": "2019-06-19",
+    "orders": 37,
+    "spend": 502.76
+  },
+  {
+    "id": 110,
+    "name": "Ella Klein",
+    "city": "Toronto",
+    "signup": "2024-03-23",
+    "orders": 146,
+    "spend": 7605.8
+  },
+  {
+    "id": 111,
+    "name": "Vic Klein",
+    "city": "Melbourne",
+    "signup": "2019-12-28",
+    "orders": 88,
+    "spend": 7137.72
+  },
+  {
+    "id": 112,
+    "name": "Olive Fischer",
+    "city": "Cumberland",
+    "signup": "2023-04-04",
+    "orders": 71,
+    "spend": 6469.47
+  },
+  {
+    "id": 113,
+    "name": "Quinn Ito",
+    "city": "Hamburg",
+    "signup": "2024-05-10",
+    "orders": 130,
+    "spend": 15035.98
+  },
+  {
+    "id": 114,
+    "name": "Ava Novak",
+    "city": "Osaka",
+    "signup": "2022-04-10",
+    "orders": 122,
+    "spend": 11366.82
+  },
+  {
+    "id": 115,
+    "name": "isla tanaka",
+    "city": "Cumberland",
+    "signup": "2021-07-15",
+    "orders": 45,
+    "spend": 4903.53
+  },
+  {
+    "id": 116,
+    "name": "Will Olsen",
+    "city": "Cumberland",
+    "signup": "2023-12-17",
+    "orders": 67,
+    "spend": 2540.46
+  },
+  {
+    "id": 117,
+    "name": "Paul Dahl",
+    "city": "Toronto",
+    "signup": "2025-10-26",
+    "orders": 5,
+    "spend": 560.98
+  },
+  {
+    "id": 118,
+    "name": "Mia Klein",
+    "city": "Cumberland",
+    "signup": "2024-06-22",
+    "orders": 2,
+    "spend": 12.41
+  },
+  {
+    "id": 119,
+    "name": "Uma Ito",
+    "city": "Melbourne",
+    "signup": "2025-10-25",
+    "orders": 16,
+    "spend": 758.34
+  },
+  {
+    "id": 120,
+    "name": "Zoe Klein",
+    "city": "Bern",
+    "signup": "2020-07-12",
+    "orders": 128,
+    "spend": 11650.04
+  },
+  {
+    "id": 121,
+    "name": "Chloe Petrov",
+    "city": "Lisbon",
+    "signup": "2023-06-22",
+    "orders": 97,
+    "spend": 10542.65
+  },
+  {
+    "id": 122,
+    "name": "Lena Moreau",
+    "city": "Lisbon",
+    "signup": "2021-02-01",
+    "orders": 109,
+    "spend": 9407.53
+  },
+  {
+    "id": 123,
+    "name": "Ruby Rossi",
+    "city": "Melbourne",
+    "signup": "2019-09-10",
+    "orders": 41,
+    "spend": 578.65
+  },
+  {
+    "id": 124,
+    "name": "Uma Ito",
+    "city": "Lyon",
+    "signup": "2023-09-09",
+    "orders": 98,
+    "spend": 8318.44
+  },
+  {
+    "id": 125,
+    "name": "Finn Petrov",
+    "city": "Berlin",
+    "signup": "2020-12-12",
+    "orders": 69,
+    "spend": 5404.41
+  },
+  {
+    "id": 126,
+    "name": "Mia Ito",
+    "city": "Cumberland",
+    "signup": "2021-05-03",
+    "orders": 5,
+    "spend": 319.14
+  },
+  {
+    "id": 127,
+    "name": "Hugo Berger",
+    "city": "Berlin",
+    "signup": "2023-11-16",
+    "orders": 150,
+    "spend": 14563.2
+  },
+  {
+    "id": 128,
+    "name": "Hugo Dahl",
+    "city": "Cumberland",
+    "signup": "2025-08-24",
+    "orders": 17,
+    "spend": 199.45
+  },
+  {
+    "id": 129,
+    "name": "Yara Evans",
+    "city": "Bergen",
+    "signup": "2022-05-21",
+    "orders": 2,
+    "spend": 227.32
+  },
+  {
+    "id": 130,
+    "name": "Kai Petrov",
+    "city": "Austin",
+    "signup": "2020-09-25",
+    "orders": 65,
+    "spend": 1507.61
+  },
+  {
+    "id": 131,
+    "name": "Ben Fischer",
+    "city": "Bern",
+    "signup": "2022-04-11",
+    "orders": 127,
+    "spend": 7968.91
+  },
+  {
+    "id": 132,
+    "name": "Finn Olsen",
+    "city": "Melbourne",
+    "signup": "2022-05-05",
+    "orders": 117,
+    "spend": 5760.26
+  },
+  {
+    "id": 133,
+    "name": "Zoe Novak",
+    "city": "Berlin",
+    "signup": "2026-04-07",
+    "orders": 132,
+    "spend": 15246.75
+  },
+  {
+    "id": 134,
+    "name": "Mia Silva",
+    "city": "Lyon",
+    "signup": "2019-07-15",
+    "orders": 79,
+    "spend": 6158.53
+  },
+  {
+    "id": 135,
+    "name": "Uma Olsen",
+    "city": "Oslo",
+    "signup": "2020-02-26",
+    "orders": 9,
+    "spend": 174.87
+  },
+  {
+    "id": 136,
+    "name": "Olive Quist",
+    "city": "Oslo",
+    "signup": "2020-02-24",
+    "orders": 83,
+    "spend": 1641.78
+  },
+  {
+    "id": 137,
+    "name": "Ruby Lee",
+    "city": "Toronto",
+    "signup": "2025-03-23",
+    "orders": 27,
+    "spend": 2666.81
+  }
+]

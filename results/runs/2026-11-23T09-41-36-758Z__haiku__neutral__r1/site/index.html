@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Timer · Pomodoro</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1 class="brand">Focus<span>.</span></h1>
+      <div class="counter" aria-live="polite">
+        <span class="counter-label">Sessions today</span>
+        <span class="counter-value" id="sessionCount">0</span>
+      </div>
+    </header>
+
+    <div class="tabs" role="tablist" aria-label="Timer mode">
+      <button class="tab" id="tab-focus" role="tab" aria-selected="true" aria-controls="timer" data-mode="focus">Focus · 25</button>
+      <button class="tab" id="tab-break" role="tab" aria-selected="false" aria-controls="timer" data-mode="break">Break · 5</button>
+    </div>
+
+    <section class="card" id="timer" role="tabpanel" aria-labelledby="tab-focus">
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+          <defs>
+            <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" id="gradStart" stop-color="#ff6b6b"/>
+              <stop offset="100%" id="gradEnd" stop-color="#ffb86b"/>
+            </linearGradient>
+          </defs>
+          <circle class="ring-track" cx="100" cy="100" r="90"/>
+          <circle class="ring-progress" id="progress" cx="100" cy="100" r="90"/>
+        </svg>
+        <div class="display">
+          <div class="time" id="time" role="timer" aria-live="off">25:00</div>
+          <div class="phase" id="phase">Ready to focus</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn btn-ghost" id="resetBtn" type="button" aria-label="Reset timer">Reset</button>
+        <button class="btn btn-primary" id="startBtn" type="button">Start</button>
+      </div>
+      <p class="hint">Press <kbd>Space</kbd> to start or pause</p>
+    </section>
+
+    <footer class="footer">Stay with one thing at a time.</footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

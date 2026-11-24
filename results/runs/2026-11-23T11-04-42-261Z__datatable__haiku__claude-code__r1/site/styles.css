@@ -1,0 +1,211 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #1d232b;
+  background: #f5f7fa;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin: 0 0 1rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  color: #4a5563;
+}
+
+.search {
+  flex: 1 1 16rem;
+}
+
+.search input {
+  width: 100%;
+}
+
+input[type="search"],
+select,
+.pager button {
+  font: inherit;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid #b8c1cc;
+  border-radius: 6px;
+  background: #fff;
+  color: inherit;
+}
+
+input[type="search"]:focus,
+select:focus,
+.pager button:focus,
+th button:focus {
+  outline: 2px solid #2f6fdb;
+  outline-offset: 1px;
+}
+
+.status {
+  margin: 0.5rem 0;
+  color: #4a5563;
+  font-size: 0.9rem;
+}
+
+/* Only the table scrolls sideways; the page itself does not. */
+.table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #fff;
+  border: 1px solid #d5dbe3;
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid #e6eaf0;
+  white-space: nowrap;
+}
+
+thead th {
+  background: #eef2f7;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+}
+
+th button {
+  font: inherit;
+  font-weight: 600;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+th button:hover {
+  text-decoration: underline;
+}
+
+.indicator::after {
+  content: "\2195";   /* up-down arrow for unsorted columns */
+  color: #98a2b0;
+  font-size: 0.85em;
+}
+
+th[aria-sort="ascending"] .indicator::after {
+  content: "\25B2";   /* ▲ */
+  color: #2f6fdb;
+}
+
+th[aria-sort="descending"] .indicator::after {
+  content: "\25BC";   /* ▼ */
+  color: #2f6fdb;
+}
+
+.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+th.num button {
+  justify-content: flex-end;
+  width: 100%;
+}
+
+tbody tr:nth-child(even) {
+  background: #fafbfd;
+}
+
+tbody tr:hover {
+  background: #eef4ff;
+}
+
+tbody .empty td {
+  text-align: center;
+  color: #4a5563;
+  padding: 1.5rem 0.8rem;
+}
+
+tfoot th,
+tfoot td {
+  font-weight: 700;
+  border-bottom: 0;
+  border-top: 2px solid #b8c1cc;
+  background: #f7f9fb;
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.pager button {
+  cursor: pointer;
+  min-width: 6.5rem;
+}
+
+.pager button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.pager button:not(:disabled):hover {
+  background: #f0f4fa;
+}
+
+#page-info {
+  font-size: 0.9rem;
+  color: #4a5563;
+  font-variant-numeric: tabular-nums;
+}

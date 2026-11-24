@@ -1,0 +1,104 @@
+{
+  "spec": "bugfix",
+  "score": 1,
+  "passed": 15,
+  "total": 15,
+  "checks": [
+    {
+      "id": "files",
+      "label": "index.html, styles.css and app.js still exist",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "ids-kept",
+      "label": "Existing element ids are kept",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "add-works",
+      "label": "Adding an expense still works (regression)",
+      "pass": true,
+      "detail": "{\"desc\":\"Groceries\",\"cat\":\"Food\",\"date\":\"2026-01-10\",\"amount\":\"$20.00\"}"
+    },
+    {
+      "id": "cents",
+      "label": "Bug 1: 12.50 is saved as $12.50",
+      "pass": true,
+      "detail": "shows $12.50"
+    },
+    {
+      "id": "delete-right",
+      "label": "Bug 2: Delete removes the clicked expense (with a filter on)",
+      "pass": true,
+      "detail": "left: Alpha, Bravo"
+    },
+    {
+      "id": "persist",
+      "label": "Bug 3: expenses survive a reload",
+      "pass": true,
+      "detail": "1 item(s) after reload"
+    },
+    {
+      "id": "filtered-total",
+      "label": "Bug 4: Total matches the filtered list",
+      "pass": true,
+      "detail": "Food filter: $10.00, All: $15.00"
+    },
+    {
+      "id": "escape",
+      "label": "Bug 5: descriptions are shown as typed, never as HTML",
+      "pass": true,
+      "detail": "texts: <img src=\"data:,\" onerror=\"window.__pwned=1\"> | <b>lunch</b>; injected elements: 0; script ran: false"
+    },
+    {
+      "id": "newest-first",
+      "label": "Bug 6: newest expenses are at the top",
+      "pass": true,
+      "detail": "Mar, Feb, Jan"
+    },
+    {
+      "id": "reject-nonpositive",
+      "label": "Bug 7: zero and negative amounts show the error",
+      "pass": true,
+      "detail": "error after 0: true, after -5: true, items added: 0"
+    },
+    {
+      "id": "empty-desc",
+      "label": "Empty description still shows the error (regression)",
+      "pass": true,
+      "detail": "error: true, items: 0"
+    },
+    {
+      "id": "filter-works",
+      "label": "Category filter shows only that category (regression)",
+      "pass": true,
+      "detail": "Train"
+    },
+    {
+      "id": "by-category",
+      "label": "Per-category totals still correct (regression)",
+      "pass": true,
+      "detail": "Food: $14.00 · Fun: $3.00 · Transport: $0.00"
+    },
+    {
+      "id": "no-external",
+      "label": "No external requests",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "no-errors",
+      "label": "No JavaScript errors",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "externalRequests": [],
+  "errors": [],
+  "screenshots": {
+    "desktop": "desktop.png"
+  },
+  "ms": 8116
+}

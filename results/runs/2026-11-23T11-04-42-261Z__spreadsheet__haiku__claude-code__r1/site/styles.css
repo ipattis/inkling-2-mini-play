@@ -1,0 +1,129 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #1f2328;
+  background: #f6f7f9;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 820px;
+  margin: 0 auto 16px;
+}
+
+.toolbar h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+button {
+  padding: 6px 14px;
+  font: inherit;
+  color: #fff;
+  background: #2f6fed;
+  border: 1px solid #2a63d4;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2862d6;
+}
+
+button:focus-visible {
+  outline: 2px solid #9ec0ff;
+  outline-offset: 2px;
+}
+
+main {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+#grid {
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  table-layout: fixed;
+}
+
+#grid th,
+#grid td {
+  border: 1px solid #d8dce2;
+  padding: 0;
+}
+
+#grid thead th,
+#grid tbody th {
+  background: #eef0f3;
+  color: #57606a;
+  font-weight: 600;
+  text-align: center;
+  user-select: none;
+}
+
+#grid thead th {
+  height: 26px;
+}
+
+#grid tbody th {
+  width: 40px;
+  min-width: 40px;
+}
+
+#grid td {
+  width: 110px;
+  height: 26px;
+}
+
+#grid input {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 3px 6px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+#grid input:focus {
+  outline: 2px solid #2f6fed;
+  outline-offset: -2px;
+  background: #fff;
+}
+
+#grid input[data-kind="number"] {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#grid input[data-kind="error"] {
+  color: #cf222e;
+  font-weight: 600;
+}
+
+.hint {
+  margin-top: 14px;
+  color: #57606a;
+}
+
+.hint code {
+  background: #eaeef2;
+  padding: 1px 4px;
+  border-radius: 4px;
+}

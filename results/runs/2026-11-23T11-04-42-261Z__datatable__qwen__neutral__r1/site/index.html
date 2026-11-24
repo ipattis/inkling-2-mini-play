@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Data Explorer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Customer Data Explorer</h1>
+
+    <div class="controls">
+      <label class="search-label">
+        <span class="visually-hidden">Search</span>
+        <input type="search" id="search" placeholder="Search name or city…" autocomplete="off">
+      </label>
+
+      <div class="pagination">
+        <button type="button" id="prev" aria-label="Previous page">&larr; Previous</button>
+        <button type="button" id="next" aria-label="Next page">Next &rarr;</button>
+        <label class="size-label">
+          Rows per page
+          <select id="size">
+            <option value="10" selected>10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <p class="status" id="status" aria-live="polite"></p>
+
+    <div class="table-wrap">
+      <table id="table">
+        <thead>
+          <tr>
+            <th data-key="name" scope="col">Name</th>
+            <th data-key="city" scope="col">City</th>
+            <th data-key="signup" scope="col">Signup date</th>
+            <th data-key="orders" scope="col" class="num">Orders</th>
+            <th data-key="spend" scope="col" class="num">Spend</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+        <tfoot id="tfoot"></tfoot>
+      </table>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

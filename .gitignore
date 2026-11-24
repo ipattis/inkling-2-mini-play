@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Live run scratch space (local paths, full model transcripts). Anchored to the
+# repo root so results/runs/ (the graded evidence) is still included.
+/runs/
+/logs/
+/results.jsonl
+
+# Per-run Claude Code config dirs for the local models (session data)
+/.claude-local/
+
+# Raw model streams: contain local paths and Claude Code's full system prompt.
+# The graded summary (run.json, grade.json, screenshots, site/) is kept.
+results/runs/*/events.jsonl
+results/runs/*/*-stream.jsonl
+results/runs.jsonl.bak-*
+
+# Tooling and OS clutter
+.claude-flow/
+.swarm/
+**/.claude-flow/
+**/.swarm/
+.DS_Store

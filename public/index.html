@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claude Code bake-off · Inkling 2 Mini vs Qwen3.8 27B vs Haiku 5.5</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="logo">✻</span>
+      <div>
+        <h1>Claude Code bake-off</h1>
+        <p>Same task, same harness, same tools. Two local models on llama.cpp vs Claude Haiku 5.5.</p>
+      </div>
+    </div>
+    <details class="task" id="taskBox">
+      <summary><span>Task</span> <em id="taskPreview"></em></summary>
+      <textarea id="task" spellcheck="false"></textarea>
+    </details>
+    <div class="controls">
+      <select id="taskSel" title="Which task(s) to run"><option value="all">Task: all</option></select>
+      <select id="harness" title="Which harness the models run in">
+        <option value="claude-code">Harness: Claude Code</option>
+        <option value="neutral">Harness: neutral loop</option>
+        <option value="both" selected>Harness: both</option>
+      </select>
+      <label class="repeats" title="How many times to repeat each harness">×<input id="repeats" type="number" min="1" max="10" value="1"></label>
+      <select id="mode" title="How the runs are scheduled">
+        <option value="sequential">One local model at a time</option>
+        <option value="parallel">All at once (shared GPU)</option>
+      </select>
+      <button id="run" class="primary">▶ Run all three</button>
+      <button id="stop">■ Stop</button>
+      <a class="compare-link" href="/compare.html">Compare results →</a>
+    </div>
+  </header>
+  <div class="banner" id="banner"></div>
+
+  <main id="grid" class="grid"></main>
+
+  <template id="colTpl">
+    <section class="col">
+      <div class="col-head">
+        <div class="title">
+          <span class="dot"></span>
+          <h2 class="name"></h2>
+          <span class="vendor"></span>
+          <span class="harness-tag"></span>
+          <span class="place"></span>
+          <button class="col-run" title="Run only this model">▶ Run</button>
+        </div>
+        <div class="chips"></div>
+      </div>
+
+      <div class="pane metrics">
+        <div class="m-status">
+          <span class="pill"></span>
+          <span class="m-current"></span>
+          <span class="server"></span>
+        </div>
+        <div class="m-think" title="Live tail of the model's reasoning"></div>
+
+        <div class="tiles">
+          <div class="tile hero"><label>Time to complete</label><b class="v-time">–</b><small class="n-time"></small></div>
+          <div class="tile hero"><label>Cost</label><b class="v-cost">–</b><small class="n-cost"></small></div>
+          <div class="tile"><label>Output speed</label><b class="v-tps">–</b><small>tok/s while streaming</small></div>
+          <div class="tile"><label>First token</label><b class="v-ttft">–</b><small>after start</small></div>
+        </div>
+
+        <div class="block grade-block">
+          <div class="b-head"><span>Autograder</span><span class="b-sub grade-sub"></span></div>
+          <div class="grade-row"><b class="grade-score">–</b><span class="grade-cells"></span></div>
+          <div class="grade-failed"></div>
+        </div>
+
+        <div class="block">
+          <div class="b-head"><span>Where the time went</span>
+            <span class="legend"><i class="lg wait"></i>waiting on model <i class="lg gen"></i>generating <i class="lg tool"></i>tools + harness</span>
+          </div>
+          <div class="timeline"></div>
+          <div class="split"></div>
+        </div>
+
+        <div class="two">
+          <div class="block">
+            <div class="b-head"><span>Tokens</span><span class="b-sub ctx"></span></div>
+            <div class="tok-rows"></div>
+          </div>
+          <div class="block">
+            <div class="b-head"><span>Work</span><span class="b-sub work-sub"></span></div>
+            <div class="work"></div>
+          </div>
+        </div>
+
+        <div class="block grow">
+          <div class="b-head"><span>Activity</span><span class="b-sub act-sub"></span></div>
+          <ol class="feed"></ol>
+        </div>
+
+        <div class="compare"></div>
+      </div>
+
+      <div class="pane browser-pane">
+        <div class="chrome">
+          <span class="lights"><i></i><i></i><i></i></span>
+          <div class="url"><span class="lock">⌂</span><span class="url-text"></span></div>
+          <button class="viewport-btn" title="Toggle desktop width (1280px, scaled)">⇔</button>
+          <button class="reload-btn" title="Reload">↻</button>
+          <a class="open-btn" target="_blank" rel="noopener" title="Open in a new tab">↗</a>
+        </div>
+        <div class="viewport">
+          <iframe class="site" title="Rendered output"></iframe>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <script src="/app.js"></script>
+</body>
+</html>

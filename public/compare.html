@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bake-off results · model × harness</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    body { overflow: auto; display: block; }
+    .wrap { max-width: 1500px; margin: 0 auto; padding: 16px 20px 60px; }
+    .bar { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+    .bar h1 { font-size: 17px; margin: 0; }
+    .bar a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .bar .sp { flex: 1; }
+    .note { color: var(--muted); font-size: 12.5px; margin: 0 0 16px; max-width: 1100px; line-height: 1.55; }
+    section { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 14px; }
+    section h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .7px; color: var(--muted); margin: 0 0 10px; }
+    table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+    th, td { padding: 7px 9px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+    th { color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .5px; }
+    th:first-child, td:first-child, td.l, th.l { text-align: left; }
+    td.model { font-weight: 650; }
+    td .sub, th .sub { display: block; color: var(--dim); font-size: 10.5px; font-weight: 400; }
+    th .sub.h-cc { color: #a5d6ff; } th .sub.h-neutral { color: #d2b8ff; }
+    .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+    .good { color: #56d364; } .bad { color: #ff7b72; } .mid { color: #e3b341; }
+    .h-cc { color: #a5d6ff; } .h-neutral { color: #d2b8ff; }
+    .heat td.cell { text-align: center; font-family: var(--mono); }
+    .pill-s { display: inline-block; padding: 2px 6px; border-radius: 5px; font-size: 10.5px; font-weight: 650; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+    .shot { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+    .shot img { display: block; width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; background: #000; }
+    .shot .cap { padding: 7px 9px; font-size: 12px; display: flex; justify-content: space-between; gap: 8px; }
+    .shot .cap b { font-weight: 650; }
+    .blind .shot .who { filter: blur(6px); }
+    .empty { color: var(--muted); padding: 10px 0; }
+    select, button { font-size: 12.5px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="bar">
+      <a href="/">← Live dashboard</a>
+      <h1>Results: model × harness</h1>
+      <span class="sp"></span>
+      <label>Task <select id="task"></select></label>
+      <label>Batch <select id="batch"></select></label>
+    </div>
+    <p class="note" id="note"></p>
+
+    <section id="overviewSec">
+      <h2>All tasks: autograder score and time per task</h2>
+      <div id="overview"></div>
+    </section>
+
+    <section>
+      <h2 id="summaryTitle">Summary (medians across repeats)</h2>
+      <div id="summary"></div>
+    </section>
+
+    <section>
+      <h2>Harness effect (neutral loop vs Claude Code, per model)</h2>
+      <div id="effect"></div>
+    </section>
+
+    <section>
+      <h2>Requirement pass rate</h2>
+      <div id="heat"></div>
+    </section>
+
+    <section>
+      <h2>Screenshots (1440 px) <button id="blind" style="margin-left:10px">Blind mode: off</button></h2>
+      <div id="gallery" class="gallery"></div>
+    </section>
+
+    <section>
+      <h2>Every run</h2>
+      <div id="runs"></div>
+    </section>
+  </div>
+  <script src="/compare.js"></script>
+</body>
+</html>

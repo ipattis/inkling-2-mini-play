@@ -1,0 +1,222 @@
+:root {
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --text: #1f2937;
+  --muted: #64748b;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --th-bg: #f8fafc;
+  --row-hover: #f1f5f9;
+  --tfoot-bg: #f8fafc;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+.page-header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+  font-size: 0.925rem;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  align-items: end;
+  margin-bottom: 0.75rem;
+}
+
+.search-label {
+  flex: 1 1 240px;
+  display: flex;
+}
+
+#search {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  font-size: 1rem;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--card);
+}
+
+#search:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+.size-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.size-label select {
+  padding: 0.45rem 0.6rem;
+  font-size: 0.95rem;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--card);
+}
+
+.status {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--card);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+}
+
+table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  font-size: 0.925rem;
+}
+
+thead th {
+  background: var(--th-bg);
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  padding: 0;
+  white-space: nowrap;
+}
+
+thead th button {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+thead th button:hover { color: var(--text); }
+
+thead th button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+
+thead th[aria-sort] button { color: var(--accent); }
+thead th[aria-sort="ascending"] button::after { content: "▲"; font-size: 0.6rem; }
+thead th[aria-sort="descending"] button::after { content: "▼"; font-size: 0.6rem; }
+
+tbody td, tfoot td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+tbody tr:last-child td { border-bottom: none; }
+
+tbody tr:hover { background: var(--row-hover); }
+
+td.num, th.num { text-align: right; }
+thead th[data-key="orders"] button,
+thead th[data-key="spend"] button { justify-content: flex-end; }
+
+tfoot {
+  background: var(--tfoot-bg);
+  font-weight: 600;
+}
+
+tfoot td {
+  border-bottom: none;
+  border-top: 2px solid var(--border);
+}
+
+tr.no-results td {
+  text-align: center;
+  color: var(--muted);
+  padding: 2.5rem 1rem;
+  font-size: 1rem;
+}
+
+tr.error td {
+  text-align: center;
+  color: #b91c1c;
+  padding: 2rem 1rem;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.pagination button {
+  padding: 0.5rem 1.1rem;
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.pagination button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.pagination button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.page-info { color: var(--muted); font-size: 0.875rem; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 560px) {
+  .page { padding: 1.25rem 0.75rem 2rem; }
+  .controls { flex-direction: column; align-items: stretch; }
+  .size-label { justify-content: space-between; }
+  .pagination { flex-wrap: wrap; justify-content: center; }
+}

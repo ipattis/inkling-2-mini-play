@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "bakeoff",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["server.mjs"],
+      "port": 4100
+    },
+    {
+      "name": "deck",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4200", "--bind", "127.0.0.1", "--directory", "docs"],
+      "port": 4200
+    }
+  ]
+}

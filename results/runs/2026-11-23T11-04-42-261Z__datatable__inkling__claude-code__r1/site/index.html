@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Customer Data Explorer</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="page-header">
+      <h1>Customers</h1>
+      <div class="search-wrap">
+        <label for="search" class="visually-hidden">Search by name or city</label>
+        <input type="search" id="search" placeholder="Search by name or city…" autocomplete="off" />
+      </div>
+    </header>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col" data-key="name"><button type="button" class="sort-btn">Name</button></th>
+            <th scope="col" data-key="city"><button type="button" class="sort-btn">City</button></th>
+            <th scope="col" data-key="signup"><button type="button" class="sort-btn">Signup date</button></th>
+            <th scope="col" data-key="orders" class="num"><button type="button" class="sort-btn">Orders</button></th>
+            <th scope="col" data-key="spend" class="num"><button type="button" class="sort-btn">Spend</button></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" class="total-label">Total (filtered)</td>
+            <td id="total-orders" class="num"></td>
+            <td id="total-spend" class="num"></td>
+          </tr>
+        </tfoot>
+      </table>
+      <p id="empty" class="empty" hidden>No results</p>
+    </div>
+
+    <footer class="pagination">
+      <label class="page-size-wrap">
+        <span class="visually-hidden">Rows per page</span>
+        <select id="page-size" aria-label="Rows per page">
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
+        <span>per page</span>
+      </label>
+      <div class="page-controls">
+        <button id="prev" type="button">Previous</button>
+        <span id="page-indicator" class="page-indicator"></span>
+        <button id="next" type="button">Next</button>
+      </div>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

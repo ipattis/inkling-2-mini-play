@@ -1,0 +1,91 @@
+{
+  "runId": "2026-11-23T09-41-36-758Z__inkling__claude-code__r1",
+  "batchId": "2026-11-23T09-41-36-758Z",
+  "at": "2026-11-23T09:41:36.766Z",
+  "model": "inkling",
+  "modelName": "Inkling 2 Mini",
+  "harness": "claude-code",
+  "repeat": 1,
+  "status": "done",
+  "error": "",
+  "wallMs": 322349,
+  "durationMs": 322107,
+  "ttftMs": 16239,
+  "apiRequests": 6,
+  "agentTurns": 6,
+  "tokens": {
+    "input": 12617,
+    "cacheWrite": 0,
+    "cacheRead": 48041,
+    "output": 8505
+  },
+  "thinkTokens": 345,
+  "contextPeak": 14569,
+  "tokPerSec": 30.644783540814668,
+  "waitMs": 40829,
+  "genMs": 277535,
+  "costUsd": 0,
+  "toolCounts": {
+    "Bash": 2,
+    "Write": 3
+  },
+  "toolErrors": 0,
+  "files": [
+    {
+      "name": "app.js",
+      "bytes": 5784,
+      "lines": 196
+    },
+    {
+      "name": "index.html",
+      "bytes": 3011,
+      "lines": 76
+    },
+    {
+      "name": "styles.css",
+      "bytes": 7988,
+      "lines": 372
+    }
+  ],
+  "grade": {
+    "score": 1,
+    "passed": 16,
+    "total": 16,
+    "failed": [],
+    "checks": {
+      "files": true,
+      "initial": true,
+      "start": true,
+      "ring": true,
+      "pause": true,
+      "reset": true,
+      "space": true,
+      "break": true,
+      "focus": true,
+      "session": true,
+      "persist": true,
+      "layout-360": true,
+      "layout-1440": true,
+      "dark": true,
+      "no-external": true,
+      "no-errors": true
+    },
+    "screenshots": {
+      "mobile": "mobile.png",
+      "desktop": "desktop.png"
+    }
+  },
+  "config": {
+    "reasoningEffort": "medium",
+    "sampling": {
+      "temp": 1,
+      "topK": 50,
+      "topP": 1,
+      "minP": 0
+    },
+    "quant": "Q8_0"
+  },
+  "task": "Build a small single-page web app in the current directory: a Pomodoro focus timer.\n\nRequirements:\n- Files: index.html, styles.css, app.js (no frameworks, no CDNs, no build step).\n- 25-minute focus / 5-minute break modes with tabs to switch between them.\n- Big mm:ss countdown inside an animated circular SVG progress ring.\n- Start / Pause / Reset buttons; the Space key toggles start/pause.\n- A \"sessions completed today\" counter that persists in localStorage.\n- A polished, modern dark UI that looks good from 360px to 1440px wide.\n\nWork directly in the files. When finished, reply with a one-line summary.",
+  "taskId": "pomodoro",
+  "taskTitle": "Pomodoro timer"
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Spreadsheet</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="toolbar">
+    <h1>Mini Spreadsheet</h1>
+    <button id="clear" type="button">Clear</button>
+  </header>
+
+  <main>
+    <table id="grid" aria-label="Spreadsheet"></table>
+    <p class="hint">Formulas start with <code>=</code>. Supports + − * /, parentheses, cell refs (A1), ranges (A1:A5) and SUM, AVG, MAX.</p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

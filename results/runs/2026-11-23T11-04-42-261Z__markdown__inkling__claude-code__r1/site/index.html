@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown Editor</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>Markdown Editor</h1>
+  <button id="copy-btn" type="button">Copy HTML</button>
+</header>
+<main>
+  <section class="pane">
+    <textarea id="editor"
+      placeholder="Write Markdown here…"
+      spellcheck="false"></textarea>
+  </section>
+  <section class="pane">
+    <div id="preview" aria-label="Preview"></div>
+  </section>
+</main>
+<footer id="status">0 words · 0 characters</footer>
+<script src="app.js"></script>
+</body>
+</html>

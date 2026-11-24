@@ -1,0 +1,94 @@
+{
+  "runId": "2026-11-23T09-41-36-758Z__qwen__neutral__r1",
+  "batchId": "2026-11-23T09-41-36-758Z",
+  "at": "2026-11-23T10:13:32.118Z",
+  "model": "qwen",
+  "modelName": "Qwen3.8 27B",
+  "harness": "neutral",
+  "repeat": 1,
+  "status": "done",
+  "error": "",
+  "wallMs": 498143,
+  "durationMs": 498078,
+  "ttftMs": 4961,
+  "apiRequests": 5,
+  "agentTurns": 5,
+  "tokens": {
+    "input": 914,
+    "cacheWrite": 0,
+    "cacheRead": 26543,
+    "output": 7382
+  },
+  "thinkTokens": 1591,
+  "contextPeak": 8178,
+  "tokPerSec": 15.017220369876863,
+  "waitMs": 6422,
+  "genMs": 491569,
+  "costUsd": 0,
+  "toolCounts": {
+    "list_files": 1,
+    "write_file": 3,
+    "edit_file": 1,
+    "check_javascript": 1
+  },
+  "toolErrors": 0,
+  "files": [
+    {
+      "name": "app.js",
+      "bytes": 6630,
+      "lines": 216
+    },
+    {
+      "name": "index.html",
+      "bytes": 2177,
+      "lines": 59
+    },
+    {
+      "name": "styles.css",
+      "bytes": 6310,
+      "lines": 310
+    }
+  ],
+  "grade": {
+    "score": 1,
+    "passed": 16,
+    "total": 16,
+    "failed": [],
+    "checks": {
+      "files": true,
+      "initial": true,
+      "start": true,
+      "ring": true,
+      "pause": true,
+      "reset": true,
+      "space": true,
+      "break": true,
+      "focus": true,
+      "session": true,
+      "persist": true,
+      "layout-360": true,
+      "layout-1440": true,
+      "dark": true,
+      "no-external": true,
+      "no-errors": true
+    },
+    "screenshots": {
+      "mobile": "mobile.png",
+      "desktop": "desktop.png"
+    }
+  },
+  "config": {
+    "reasoningEffort": "medium",
+    "sampling": {
+      "temp": 1,
+      "topK": 20,
+      "topP": 0.95,
+      "minP": 0,
+      "presencePenalty": 0
+    },
+    "quant": "Q8_0"
+  },
+  "task": "Build a small single-page web app in the current directory: a Pomodoro focus timer.\n\nRequirements:\n- Files: index.html, styles.css, app.js (no frameworks, no CDNs, no build step).\n- 25-minute focus / 5-minute break modes with tabs to switch between them.\n- Big mm:ss countdown inside an animated circular SVG progress ring.\n- Start / Pause / Reset buttons; the Space key toggles start/pause.\n- A \"sessions completed today\" counter that persists in localStorage.\n- A polished, modern dark UI that looks good from 360px to 1440px wide.\n\nWork directly in the files. When finished, reply with a one-line summary.",
+  "taskId": "pomodoro",
+  "taskTitle": "Pomodoro timer"
+}

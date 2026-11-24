@@ -1,0 +1,197 @@
+:root {
+  --border: #d8dee6;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #2563eb;
+  --accent-dark: #1d4ed8;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --head: #eef2f7;
+  --foot: #f1f5f9;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.search-wrap { flex: 1 1 260px; max-width: 360px; }
+
+input[type="search"] {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text);
+}
+input[type="search"]:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+.status {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.table-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+  font-variant-numeric: tabular-nums;
+}
+
+thead th {
+  background: var(--head);
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+  white-space: nowrap;
+}
+
+thead th.num { text-align: right; }
+
+.sort-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 10px 14px;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #374151;
+  cursor: pointer;
+  text-align: inherit;
+}
+.sort-btn:hover { color: var(--accent-dark); background: rgba(37, 99, 235, 0.06); }
+.sort-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+thead th[aria-sort] .sort-btn { color: var(--accent-dark); }
+
+tbody td, tfoot td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+tbody tr:nth-child(even) { background: #fafbfd; }
+tbody tr:hover { background: #f0f6ff; }
+
+.num { text-align: right; }
+
+tfoot td {
+  background: var(--foot);
+  font-weight: 600;
+  border-bottom: none;
+}
+
+.total-label {
+  color: var(--muted);
+  font-weight: 600;
+  text-align: right;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.empty {
+  padding: 28px 16px;
+  text-align: center;
+  color: var(--muted);
+  margin: 0;
+}
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.page-size-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+select {
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  font: inherit;
+  color: var(--text);
+}
+
+.page-controls { display: inline-flex; align-items: center; gap: 12px; }
+
+button {
+  padding: 7px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent-dark); }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.page-indicator { color: var(--muted); font-size: 0.9rem; min-width: 5.5em; text-align: center; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+  .page-header { flex-direction: column; align-items: stretch; }
+  .search-wrap { max-width: none; }
+  .pagination { flex-direction: column; align-items: stretch; }
+  .page-controls { justify-content: space-between; }
+}

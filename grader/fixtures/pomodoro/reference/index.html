@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reference Pomodoro</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="card">
+    <div class="tabs" role="tablist">
+      <button role="tab" id="tab-focus" aria-selected="true">Focus</button>
+      <button role="tab" id="tab-break" aria-selected="false">Break</button>
+    </div>
+    <div class="dial">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <circle class="track" cx="100" cy="100" r="90"></circle>
+        <circle class="bar" id="bar" cx="100" cy="100" r="90"></circle>
+      </svg>
+      <div class="time" id="time">25:00</div>
+    </div>
+    <div class="buttons">
+      <button id="toggle">Start</button>
+      <button id="reset">Reset</button>
+    </div>
+    <p class="sessions"><span id="count">0</span> sessions completed today</p>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

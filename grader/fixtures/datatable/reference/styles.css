@@ -1,0 +1,11 @@
+body { margin: 0; font: 14px/1.4 system-ui, sans-serif; background: #f7f8fa; color: #1d2330; }
+main { max-width: 900px; margin: 0 auto; padding: 16px; }
+.controls, .pager { display: flex; gap: 12px; align-items: center; margin: 12px 0; flex-wrap: wrap; }
+.scroller { overflow-x: auto; background: #fff; border: 1px solid #e1e4ea; border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; min-width: 560px; }
+th, td { padding: 7px 10px; border-bottom: 1px solid #eef0f4; text-align: left; white-space: nowrap; }
+th { cursor: pointer; background: #f1f3f6; }
+th[aria-sort="ascending"]::after { content: " ▲"; }
+th[aria-sort="descending"]::after { content: " ▼"; }
+td:nth-child(4), td:nth-child(5) { text-align: right; font-variant-numeric: tabular-nums; }
+tfoot td { font-weight: 600; }

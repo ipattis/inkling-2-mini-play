@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <title>Pomodoro — Focus Timer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <main class="app">
+    <header class="app__header">
+      <div class="brand">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <path d="M12 7c-3.9 0-7 2.9-7 6.5S8.1 20 12 20s7-3 7-6.5S15.9 7 12 7Z"
+                  fill="currentColor" opacity="0.9" />
+            <path d="M12 7c0-2 1.2-3.4 3-4" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" />
+          </svg>
+        </span>
+        <h1 class="brand__name">Pomodoro</h1>
+      </div>
+      <span class="mode-badge" id="modeBadge" aria-live="polite">Focus</span>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="Timer mode">
+      <button class="tabs__btn is-active" id="tabFocus" role="tab" aria-selected="true" data-mode="focus">Focus</button>
+      <button class="tabs__btn" id="tabBreak" role="tab" aria-selected="false" data-mode="break">Break</button>
+      <span class="tabs__indicator" id="tabIndicator" aria-hidden="true"></span>
+    </nav>
+
+    <section class="timer" aria-label="Countdown">
+      <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+        <defs>
+          <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop class="ring__stop ring__stop--a" offset="0%" />
+            <stop class="ring__stop ring__stop--b" offset="100%" />
+          </linearGradient>
+        </defs>
+        <circle class="ring__track" cx="100" cy="100" r="84"></circle>
+        <circle class="ring__progress" id="ringProgress" cx="100" cy="100" r="84"></circle>
+      </svg>
+      <div class="timer__readout">
+        <div class="timer__time" id="timeDisplay" role="timer" aria-live="off">25:00</div>
+        <div class="timer__state" id="stateLabel">Ready</div>
+      </div>
+    </section>
+
+    <div class="controls">
+      <button class="btn btn--primary" id="toggleBtn" aria-keyshortcuts="Space">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+          <path id="iconPlay" d="M8 5v14l11-7z" />
+          <g id="iconPause" style="display:none">
+            <rect x="6" y="5" width="4" height="14" rx="1" />
+            <rect x="14" y="5" width="4" height="14" rx="1" />
+          </g>
+        </svg>
+        <span id="toggleLabel">Start</span>
+      </button>
+      <button class="btn btn--ghost" id="resetBtn">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+          <path d="M4 4v6h6M20 20v-6h-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M20 10a8 8 0 0 0-14-4L4 8M4 14a8 8 0 0 0 14 4l2-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span>Reset</span>
+      </button>
+    </div>
+
+    <footer class="sessions">
+      <span class="sessions__dot" id="sessionsDot" aria-hidden="true"></span>
+      <span class="sessions__text" id="sessionsText">0 sessions today</span>
+    </footer>
+
+    <p class="hint">Press <kbd>Space</kbd> to start / pause</p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

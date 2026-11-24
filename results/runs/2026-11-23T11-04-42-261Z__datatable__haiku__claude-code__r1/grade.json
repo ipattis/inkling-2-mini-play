@@ -1,0 +1,147 @@
+{
+  "spec": "datatable",
+  "score": 1,
+  "passed": 22,
+  "total": 22,
+  "checks": [
+    {
+      "id": "files",
+      "label": "index.html, styles.css and app.js exist; data.json unchanged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "first-page",
+      "label": "Loads data.json: 10 rows and \"Showing 1–10 of 137\"",
+      "pass": true,
+      "detail": "10 rows, status \"Showing 1–10 of 137\""
+    },
+    {
+      "id": "columns",
+      "label": "Columns Name, City, Signup date, Orders, Spend; $ and date formats",
+      "pass": true,
+      "detail": "Name | City | Signup date | Orders | Spend"
+    },
+    {
+      "id": "sort-name",
+      "label": "Name header sorts ascending (case-insensitive, ties by id)",
+      "pass": true,
+      "detail": "Ava Berger · Ava Costa · Ava Novak"
+    },
+    {
+      "id": "aria-sort",
+      "label": "Sorted header carries aria-sort; clicking again toggles it",
+      "pass": true,
+      "detail": "while ascending: ascending, after one more click: descending"
+    },
+    {
+      "id": "sort-name-desc",
+      "label": "Second click sorts descending",
+      "pass": true,
+      "detail": "Zoe Quist · Zoe Novak · Zoe Klein"
+    },
+    {
+      "id": "sort-orders",
+      "label": "Orders sorts numerically (9 before 10)",
+      "pass": true,
+      "detail": "orders: 2,2,2,2,2,2,3,3,3,4"
+    },
+    {
+      "id": "sort-date",
+      "label": "Signup date sorts chronologically (desc on 2nd click)",
+      "pass": true,
+      "detail": "dates: 2026-12-24,2026-12-11,2026-11-11,2026-10-13"
+    },
+    {
+      "id": "sort-ties",
+      "label": "Ties are ordered by id ascending, also when descending (full City ↓ order, all pages)",
+      "pass": true,
+      "detail": "137 rows"
+    },
+    {
+      "id": "sort-spend",
+      "label": "Spend sorts numerically (ties by id)",
+      "pass": true,
+      "detail": "spend: $12.41,$14.47,$83.31,$102.87"
+    },
+    {
+      "id": "pagination",
+      "label": "Next/Previous pages; last page \"Showing 131–137 of 137\"",
+      "pass": true,
+      "detail": "page 2 \"Showing 11–20 of 137\", last \"Showing 131–137 of 137\" (7 rows), back \"Showing 121–130 of 137\""
+    },
+    {
+      "id": "page-size",
+      "label": "Page size 25/50 works and returns to page 1",
+      "pass": true,
+      "detail": "25 → 25 rows \"Showing 1–25 of 137\", 50 → 50 rows"
+    },
+    {
+      "id": "search",
+      "label": "Search matches name or city, case-insensitive",
+      "pass": true,
+      "detail": "\"Showing 1–10 of 46\" (want 1–10 of 46)"
+    },
+    {
+      "id": "search-resets",
+      "label": "Searching returns to page 1",
+      "pass": true,
+      "detail": "\"Showing 1–10 of 95\""
+    },
+    {
+      "id": "no-results",
+      "label": "\"No results\" and no data rows when nothing matches",
+      "pass": true,
+      "detail": "0 data rows, \"No results\" visible: true"
+    },
+    {
+      "id": "totals",
+      "label": "Footer totals cover all matching rows, not just the page",
+      "pass": true,
+      "detail": "tfoot \"Total (matching rows) 3372 $186,705.02\" (want 3372 and $186,705.02)"
+    },
+    {
+      "id": "hash-write",
+      "label": "State is written to the URL hash (sort, dir, q, page, size)",
+      "pass": true,
+      "detail": "{\"sort\":\"spend\",\"dir\":\"desc\",\"q\":\"on\",\"page\":\"1\",\"size\":\"25\"}"
+    },
+    {
+      "id": "hash-restore",
+      "label": "Opening a URL with a hash restores that exact state",
+      "pass": true,
+      "detail": "\"Showing 11–20 of 27\" first date: 2021-11-26 (want 2021-11-26)"
+    },
+    {
+      "id": "status-format",
+      "label": "Status line uses an en dash exactly (\"Showing 11–20 of 137\")",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "layout-360",
+      "label": "At 360px the table scrolls in its own container (no page scroll)",
+      "pass": true,
+      "detail": "page scrollWidth 360/360"
+    },
+    {
+      "id": "no-external",
+      "label": "No external requests (no CDNs / libraries)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "no-errors",
+      "label": "No JavaScript errors",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "externalRequests": [],
+  "errors": [],
+  "screenshots": {
+    "desktop": "desktop.png",
+    "mobile": "mobile.png"
+  },
+  "ms": 10879
+}

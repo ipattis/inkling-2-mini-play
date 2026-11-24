@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pomodoro Focus Timer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1>Pomodoro</h1>
+      <p class="tagline">Focus. Rest. Repeat.</p>
+    </header>
+
+    <section class="card" aria-label="Timer">
+      <nav class="tabs" role="tablist" aria-label="Timer mode">
+        <button id="tab-focus" class="tab is-active" role="tab" aria-selected="true">Focus</button>
+        <button id="tab-break" class="tab" role="tab" aria-selected="false">Break</button>
+        <span class="tab-thumb" aria-hidden="true"></span>
+      </nav>
+
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+          <defs>
+            <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#7c6cff" />
+              <stop offset="100%" stop-color="#38d9c3" />
+            </linearGradient>
+            <linearGradient id="breakGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#38d9c3" />
+              <stop offset="100%" stop-color="#ffd166" />
+            </linearGradient>
+          </defs>
+          <circle class="ring-track" cx="100" cy="100" r="85" />
+          <circle id="ring-fg" class="ring-fg" cx="100" cy="100" r="85" />
+        </svg>
+        <div class="time" id="time" role="timer" aria-live="off">25:00</div>
+      </div>
+
+      <div class="controls">
+        <button id="btn-start" class="btn btn-primary">Start</button>
+        <button id="btn-reset" class="btn btn-ghost">Reset</button>
+      </div>
+
+      <p class="hint">Press <kbd>Space</kbd> to start / pause</p>
+    </section>
+
+    <footer class="sessions" aria-label="Sessions completed today">
+      <span class="sessions-label">Completed today</span>
+      <span class="sessions-value" id="sessions">0</span>
+      <span class="sessions-pomos" id="pomos" aria-hidden="true"></span>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

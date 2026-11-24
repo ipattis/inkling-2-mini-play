@@ -1,0 +1,88 @@
+{
+  "runId": "2026-11-23T09-41-36-758Z__haiku__claude-code__r1",
+  "batchId": "2026-11-23T09-41-36-758Z",
+  "at": "2026-11-23T09:41:36.761Z",
+  "model": "haiku",
+  "modelName": "Claude Haiku 5.5",
+  "harness": "claude-code",
+  "repeat": 1,
+  "status": "done",
+  "error": "",
+  "wallMs": 52001,
+  "durationMs": 49636,
+  "ttftMs": 3958,
+  "apiRequests": 4,
+  "agentTurns": 7,
+  "tokens": {
+    "input": 1211,
+    "cacheWrite": 21099,
+    "cacheRead": 39411,
+    "output": 12484
+  },
+  "thinkTokens": 3268,
+  "contextPeak": 21101,
+  "tokPerSec": 285.54595443833466,
+  "waitMs": 5092,
+  "genMs": 43282,
+  "costUsd": 0.009394584999999999,
+  "toolCounts": {
+    "Glob": 1,
+    "Write": 3,
+    "Edit": 1,
+    "Bash": 1
+  },
+  "toolErrors": 0,
+  "files": [
+    {
+      "name": "app.js",
+      "bytes": 8732,
+      "lines": 298
+    },
+    {
+      "name": "index.html",
+      "bytes": 2384,
+      "lines": 66
+    },
+    {
+      "name": "styles.css",
+      "bytes": 7457,
+      "lines": 388
+    }
+  ],
+  "grade": {
+    "score": 1,
+    "passed": 16,
+    "total": 16,
+    "failed": [],
+    "checks": {
+      "files": true,
+      "initial": true,
+      "start": true,
+      "ring": true,
+      "pause": true,
+      "reset": true,
+      "space": true,
+      "break": true,
+      "focus": true,
+      "session": true,
+      "persist": true,
+      "layout-360": true,
+      "layout-1440": true,
+      "dark": true,
+      "no-external": true,
+      "no-errors": true
+    },
+    "screenshots": {
+      "mobile": "mobile.png",
+      "desktop": "desktop.png"
+    }
+  },
+  "config": {
+    "reasoningEffort": "default",
+    "sampling": null,
+    "quant": null
+  },
+  "task": "Build a small single-page web app in the current directory: a Pomodoro focus timer.\n\nRequirements:\n- Files: index.html, styles.css, app.js (no frameworks, no CDNs, no build step).\n- 25-minute focus / 5-minute break modes with tabs to switch between them.\n- Big mm:ss countdown inside an animated circular SVG progress ring.\n- Start / Pause / Reset buttons; the Space key toggles start/pause.\n- A \"sessions completed today\" counter that persists in localStorage.\n- A polished, modern dark UI that looks good from 360px to 1440px wide.\n\nWork directly in the files. When finished, reply with a one-line summary.",
+  "taskId": "pomodoro",
+  "taskTitle": "Pomodoro timer"
+}

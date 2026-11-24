@@ -1,0 +1,91 @@
+{
+  "runId": "2026-11-23T11-04-42-261Z__bugfix__qwen__neutral__r1",
+  "batchId": "2026-11-23T11-04-42-261Z",
+  "at": "2026-11-23T13:45:58.254Z",
+  "taskId": "bugfix",
+  "taskTitle": "Bug fix",
+  "model": "qwen",
+  "modelName": "Qwen3.8 27B",
+  "harness": "neutral",
+  "repeat": 1,
+  "status": "done",
+  "error": "",
+  "wallMs": 215729,
+  "durationMs": 215671,
+  "ttftMs": 3859,
+  "apiRequests": 6,
+  "agentTurns": 6,
+  "tokens": {
+    "input": 3632,
+    "cacheWrite": 0,
+    "cacheRead": 17115,
+    "output": 1741
+  },
+  "thinkTokens": 594,
+  "contextPeak": 5188,
+  "tokPerSec": 9.305234127387106,
+  "waitMs": 28452,
+  "genMs": 187099,
+  "costUsd": 0,
+  "toolCounts": {
+    "read_file": 4,
+    "edit_file": 7,
+    "check_javascript": 1
+  },
+  "toolErrors": 0,
+  "files": [
+    {
+      "name": "app.js",
+      "bytes": 2880,
+      "lines": 98
+    },
+    {
+      "name": "index.html",
+      "bytes": 1298,
+      "lines": 48
+    },
+    {
+      "name": "styles.css",
+      "bytes": 1585,
+      "lines": 31
+    }
+  ],
+  "grade": {
+    "score": 1,
+    "passed": 15,
+    "total": 15,
+    "failed": [],
+    "checks": {
+      "files": true,
+      "ids-kept": true,
+      "add-works": true,
+      "cents": true,
+      "delete-right": true,
+      "persist": true,
+      "filtered-total": true,
+      "escape": true,
+      "newest-first": true,
+      "reject-nonpositive": true,
+      "empty-desc": true,
+      "filter-works": true,
+      "by-category": true,
+      "no-external": true,
+      "no-errors": true
+    },
+    "screenshots": {
+      "desktop": "desktop.png"
+    }
+  },
+  "config": {
+    "reasoningEffort": "medium",
+    "sampling": {
+      "temp": 1,
+      "topK": 20,
+      "topP": 0.95,
+      "minP": 0,
+      "presencePenalty": 0
+    },
+    "quant": "Q8_0"
+  },
+  "task": "This directory contains a small expense tracker (index.html, styles.css, app.js). Users have reported these problems:\n\n1. Entering 12.50 as the amount saves the expense as $12.00.\n2. Deleting an expense sometimes removes a different one, especially with a category filter on.\n3. All expenses are gone after reloading the page, although the app is meant to save them.\n4. With a category filter on, the total doesn't match the expenses shown.\n5. A description like <b>lunch</b> shows up in bold instead of exactly as typed.\n6. The newest expenses should be at the top of the list, but they are at the bottom.\n7. You can add an expense with a zero or negative amount. That should show the error message instead.\n\nFix all of them in place. Keep everything that already works working: the form, the category filter, the per-category totals and the styling. Keep the existing element ids and classes, because other code depends on them. Don't rewrite the app from scratch.\n\nWhen finished, reply with a one-line summary."
+}

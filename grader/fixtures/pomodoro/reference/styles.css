@@ -1,0 +1,22 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  background: #0d1016;
+  color: #e8ecf2;
+  font: 16px/1.4 system-ui, sans-serif;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+.card { width: min(360px, 92vw); padding: 24px; text-align: center; }
+.tabs { display: flex; gap: 8px; justify-content: center; margin-bottom: 16px; }
+button { font: inherit; color: inherit; background: #1b2230; border: 1px solid #2c3547; border-radius: 8px; padding: 8px 14px; cursor: pointer; }
+[aria-selected="true"] { background: #3a4a6b; }
+.dial { position: relative; width: 240px; max-width: 80vw; aspect-ratio: 1; margin: 0 auto; }
+.dial svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.track, .bar { fill: none; stroke-width: 10; }
+.track { stroke: #1f2735; }
+.bar { stroke: #6c8cff; stroke-linecap: round; stroke-dasharray: 565.49; stroke-dashoffset: 0; transition: stroke-dashoffset .3s linear; }
+.time { position: absolute; inset: 0; display: grid; place-items: center; font-size: 52px; font-variant-numeric: tabular-nums; }
+.buttons { display: flex; gap: 8px; justify-content: center; margin: 18px 0; }
+.sessions { color: #9aa6b8; }

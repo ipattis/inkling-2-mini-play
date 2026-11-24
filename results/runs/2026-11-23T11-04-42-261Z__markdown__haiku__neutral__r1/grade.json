@@ -1,0 +1,135 @@
+{
+  "spec": "markdown",
+  "score": 1,
+  "passed": 20,
+  "total": 20,
+  "checks": [
+    {
+      "id": "files",
+      "label": "index.html, styles.css and app.js exist",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "structure",
+      "label": "<textarea id=\"editor\">, #preview and #status exist",
+      "pass": true,
+      "detail": "{\"editor\":\"TEXTAREA\",\"preview\":true,\"status\":true}"
+    },
+    {
+      "id": "headings",
+      "label": "# … ###### → <h1> … <h6> (also on consecutive lines)",
+      "pass": true,
+      "detail": "h1=One h2=Two h6=Six"
+    },
+    {
+      "id": "paragraphs",
+      "label": "Blank lines separate <p> paragraphs",
+      "pass": true,
+      "detail": "[\"first para\",\"second para\"]"
+    },
+    {
+      "id": "inline",
+      "label": "**bold**, *italic*, _italic_ and `code`",
+      "pass": true,
+      "detail": "{\"strong\":\"bold\",\"em\":[\"it\",\"em\"],\"code\":\"x < y\"}"
+    },
+    {
+      "id": "links",
+      "label": "[text](url) → <a> for http(s) and mailto",
+      "pass": true,
+      "detail": "[[\"https://example.com/a?b=1\",\"site\"],[\"mailto:hi@example.com\",\"mail\"]]"
+    },
+    {
+      "id": "unsafe-links",
+      "label": "javascript: (and other) links render as plain text",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "lists",
+      "label": "Unordered (- / *) and ordered (1.) lists",
+      "pass": true,
+      "detail": "{\"ul\":[\"apple\",\"pear\"],\"ol\":[\"one\",\"two\",\"three\"]}"
+    },
+    {
+      "id": "code-block",
+      "label": "Fenced code blocks keep their contents exactly",
+      "pass": true,
+      "detail": "\"**not bold** <b>tag</b>\\n# not a heading\\n  indented\""
+    },
+    {
+      "id": "blockquote",
+      "label": "> lines → <blockquote>",
+      "pass": true,
+      "detail": "wise words"
+    },
+    {
+      "id": "hr",
+      "label": "A line of --- → <hr>",
+      "pass": true,
+      "detail": "1 <hr>"
+    },
+    {
+      "id": "no-raw-html",
+      "label": "Raw HTML shows as text and never runs",
+      "pass": true,
+      "detail": "elements: 0, script ran: false"
+    },
+    {
+      "id": "live",
+      "label": "Preview updates while typing",
+      "pass": true,
+      "detail": "Live title"
+    },
+    {
+      "id": "counts",
+      "label": "Status shows word and character counts",
+      "pass": true,
+      "detail": "3 words · 15 characters"
+    },
+    {
+      "id": "autosave",
+      "label": "Text autosaves and is restored on reload",
+      "pass": true,
+      "detail": "editor \"saved **here**\", preview strong \"here\""
+    },
+    {
+      "id": "copy-html",
+      "label": "\"Copy HTML\" copies the rendered HTML",
+      "pass": true,
+      "detail": "<h1>Copy me</h1>"
+    },
+    {
+      "id": "side-by-side",
+      "label": "Editor and preview side by side on desktop",
+      "pass": true,
+      "detail": "{\"aRight\":639.5,\"bLeft\":640.5,\"aTop\":76.96875,\"bTop\":76.96875}"
+    },
+    {
+      "id": "stacked-360",
+      "label": "Stacked (editor above preview) at 360px, no sideways scroll",
+      "pass": true,
+      "detail": "{\"aBottom\":379.5,\"bTop\":407.6875,\"sw\":360,\"iw\":360}"
+    },
+    {
+      "id": "no-external",
+      "label": "No external requests (no Markdown library / CDN)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "no-errors",
+      "label": "No JavaScript errors",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "externalRequests": [],
+  "errors": [],
+  "screenshots": {
+    "desktop": "desktop.png",
+    "mobile": "mobile.png"
+  },
+  "ms": 3796
+}

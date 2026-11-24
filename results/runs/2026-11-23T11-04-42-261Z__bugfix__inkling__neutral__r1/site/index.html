@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Expenses</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <h1>Expenses</h1>
+    <form id="form" novalidate>
+      <input id="desc" placeholder="Description" autocomplete="off">
+      <input id="amount" type="number" step="0.01" placeholder="Amount">
+      <select id="category">
+        <option>Food</option>
+        <option>Transport</option>
+        <option>Housing</option>
+        <option>Fun</option>
+      </select>
+      <input id="date" type="date">
+      <button id="add" type="submit">Add</button>
+    </form>
+    <p id="error" class="error" hidden></p>
+
+    <div class="toolbar">
+      <label>Show
+        <select id="filter">
+          <option>All</option>
+          <option>Food</option>
+          <option>Transport</option>
+          <option>Housing</option>
+          <option>Fun</option>
+        </select>
+      </label>
+      <p class="total">Total: <strong id="total">$0.00</strong></p>
+    </div>
+
+    <ul id="list"></ul>
+    <p id="empty" class="empty">No expenses yet.</p>
+
+    <h2>By category</h2>
+    <ul id="by-category"></ul>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

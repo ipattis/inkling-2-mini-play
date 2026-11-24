@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Customer Data Explorer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="explorer">
+    <h1>Customer Data Explorer</h1>
+
+    <div class="controls">
+      <label for="search">Search
+        <input type="search" id="search" placeholder="Name or city…" autocomplete="off">
+      </label>
+      <label for="pageSize">Rows per page
+        <select id="pageSize">
+          <option value="10" selected>10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="table-wrap">
+      <table id="customers">
+        <thead>
+          <tr>
+            <th scope="col" data-key="name">Name</th>
+            <th scope="col" data-key="city">City</th>
+            <th scope="col" data-key="signup">Signup date</th>
+            <th scope="col" data-key="orders">Orders</th>
+            <th scope="col" data-key="spend">Spend</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">Total (matching rows)</td>
+            <td id="totalOrders"></td>
+            <td id="totalSpend"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="pager">
+      <button id="prev" type="button">Previous</button>
+      <span id="status" aria-live="polite"></span>
+      <button id="next" type="button">Next</button>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

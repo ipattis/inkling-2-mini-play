@@ -1,0 +1,96 @@
+{
+  "runId": "2026-11-23T11-04-42-261Z__markdown__qwen__neutral__r1",
+  "batchId": "2026-11-23T11-04-42-261Z",
+  "at": "2026-11-23T14:49:21.098Z",
+  "taskId": "markdown",
+  "taskTitle": "Markdown editor",
+  "model": "qwen",
+  "modelName": "Qwen3.8 27B",
+  "harness": "neutral",
+  "repeat": 1,
+  "status": "done",
+  "error": "",
+  "wallMs": 573377,
+  "durationMs": 573322,
+  "ttftMs": 7367,
+  "apiRequests": 3,
+  "agentTurns": 3,
+  "tokens": {
+    "input": 1125,
+    "cacheWrite": 0,
+    "cacheRead": 12657,
+    "output": 5489
+  },
+  "thinkTokens": 1690,
+  "contextPeak": 6491,
+  "tokPerSec": 9.72352867192081,
+  "waitMs": 8393,
+  "genMs": 564507,
+  "costUsd": 0,
+  "toolCounts": {
+    "write_file": 3,
+    "check_javascript": 1
+  },
+  "toolErrors": 0,
+  "files": [
+    {
+      "name": "app.js",
+      "bytes": 6230,
+      "lines": 234
+    },
+    {
+      "name": "index.html",
+      "bytes": 760,
+      "lines": 29
+    },
+    {
+      "name": "styles.css",
+      "bytes": 2696,
+      "lines": 180
+    }
+  ],
+  "grade": {
+    "score": 1,
+    "passed": 20,
+    "total": 20,
+    "failed": [],
+    "checks": {
+      "files": true,
+      "structure": true,
+      "headings": true,
+      "paragraphs": true,
+      "inline": true,
+      "links": true,
+      "unsafe-links": true,
+      "lists": true,
+      "code-block": true,
+      "blockquote": true,
+      "hr": true,
+      "no-raw-html": true,
+      "live": true,
+      "counts": true,
+      "autosave": true,
+      "copy-html": true,
+      "side-by-side": true,
+      "stacked-360": true,
+      "no-external": true,
+      "no-errors": true
+    },
+    "screenshots": {
+      "desktop": "desktop.png",
+      "mobile": "mobile.png"
+    }
+  },
+  "config": {
+    "reasoningEffort": "medium",
+    "sampling": {
+      "temp": 1,
+      "topK": 20,
+      "topP": 0.95,
+      "minP": 0,
+      "presencePenalty": 0
+    },
+    "quant": "Q8_0"
+  },
+  "task": "Build a Markdown editor with live preview as a single-page web app in the current directory: index.html, styles.css and app.js. No frameworks, no CDNs, no build step, and no Markdown library: write the parser yourself.\n\nLayout\n- A <textarea id=\"editor\"> and a preview <div id=\"preview\"> side by side, stacked (editor above preview) on screens narrower than 700px.\n- The preview updates as you type.\n\nSupported syntax\n- Headings: # to ###### become <h1> to <h6>.\n- Paragraphs: blocks of text separated by blank lines become <p>.\n- Inline: **bold** → <strong>, *italic* or _italic_ → <em>, `code` → <code>.\n- Links: [text](url) → <a href=\"url\">text</a>. Only http:, https: and mailto: URLs become links; any other link renders as plain text.\n- Lists: lines starting with \"- \" or \"* \" → <ul><li>; lines starting with \"1. \", \"2. \" … → <ol><li>.\n- Fenced code blocks: lines between ``` fences → <pre><code>, with the contents shown exactly as written and no Markdown processing inside.\n- Blockquotes: lines starting with \"> \" → <blockquote>.\n- A line containing only --- → <hr>.\n\nSafety\n- Raw HTML in the input is shown as text, never rendered, so <script> or <img onerror> can't run.\n\nAlso\n- A status bar with id=\"status\" shows the word and character count of the source, e.g. \"12 words · 68 characters\".\n- The text autosaves to localStorage and is restored on reload.\n- A \"Copy HTML\" button copies the rendered HTML to the clipboard.\n\nWhen finished, reply with a one-line summary."
+}

@@ -1,0 +1,164 @@
+:root {
+  --fg: #1f2430;
+  --muted: #5b6472;
+  --line: #d9dee7;
+  --bg: #f6f7fa;
+  --card: #ffffff;
+  --accent: #2f5fd0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  color: var(--fg);
+  background: var(--bg);
+  line-height: 1.45;
+}
+
+.explorer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin: 0 0 16px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.controls label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+}
+
+.controls input[type="search"] {
+  min-width: 220px;
+  padding: 6px 10px;
+  font-size: 15px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.controls select {
+  padding: 6px 8px;
+  font-size: 15px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--card);
+}
+
+/* Table lives in its own scroll container so the page itself
+   never scrolls sideways on narrow screens. */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+}
+
+thead th {
+  text-align: left;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-bottom: 2px solid var(--line);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  background: var(--card);
+}
+
+thead th:hover {
+  color: var(--accent);
+}
+
+thead th[aria-sort="ascending"]::after {
+  content: " ▲";
+  font-size: 0.7em;
+}
+
+thead th[aria-sort="descending"]::after {
+  content: " ▼";
+  font-size: 0.7em;
+}
+
+tbody td {
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+tbody tr:hover {
+  background: #f0f4ff;
+}
+
+td.num,
+th:nth-child(n + 4) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+tfoot td {
+  padding: 10px 14px;
+  border-top: 2px solid var(--line);
+  font-weight: 600;
+  background: #fafbfd;
+}
+
+tfoot td:nth-child(n + 4) {
+  text-align: right;
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.pager button {
+  padding: 6px 14px;
+  font-size: 15px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--card);
+  cursor: pointer;
+}
+
+.pager button:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.pager button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+#status {
+  color: var(--muted);
+}

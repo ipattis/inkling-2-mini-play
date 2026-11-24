@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Data Explorer</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="page">
+  <header class="page-header">
+    <h1>Customer Data Explorer</h1>
+    <p class="subtitle">Search, sort and page through the customer records.</p>
+  </header>
+
+  <section class="controls" aria-label="Filters and pagination settings">
+    <label class="search-label">
+      <span class="sr-only">Search by name or city</span>
+      <input type="search" id="search" placeholder="Search by name or city…" autocomplete="off" spellcheck="false">
+    </label>
+    <label class="size-label">
+      <span>Rows per page</span>
+      <select id="size">
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+      </select>
+    </label>
+  </section>
+
+  <p id="status" class="status" aria-live="polite"></p>
+
+  <div class="table-wrap">
+    <table id="table">
+      <thead>
+        <tr>
+          <th data-key="name" scope="col"><button type="button">Name</button></th>
+          <th data-key="city" scope="col"><button type="button">City</button></th>
+          <th data-key="signup" scope="col"><button type="button">Signup date</button></th>
+          <th data-key="orders" scope="col"><button type="button">Orders</button></th>
+          <th data-key="spend" scope="col"><button type="button">Spend</button></th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3" id="total-label">Total</td>
+          <td id="total-orders" class="num"></td>
+          <td id="total-spend" class="num"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="pagination">
+    <button id="prev" type="button">Previous</button>
+    <span id="page-info" class="page-info"></span>
+    <button id="next" type="button">Next</button>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

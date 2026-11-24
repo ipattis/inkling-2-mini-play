@@ -1,0 +1,111 @@
+{
+  "spec": "pomodoro",
+  "score": 1,
+  "passed": 16,
+  "total": 16,
+  "checks": [
+    {
+      "id": "files",
+      "label": "index.html, styles.css and app.js exist",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "initial",
+      "label": "Shows 25:00 on load (focus mode)",
+      "pass": true,
+      "detail": "25:00"
+    },
+    {
+      "id": "start",
+      "label": "Start counts down at real speed (60 s → 24:00)",
+      "pass": true,
+      "detail": "after 60 s: 24:00"
+    },
+    {
+      "id": "ring",
+      "label": "Animated circular SVG progress ring",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "pause",
+      "label": "Pause stops the countdown",
+      "pass": true,
+      "detail": "23:59 → 23:59 over 10 s"
+    },
+    {
+      "id": "reset",
+      "label": "Reset returns to 25:00",
+      "pass": true,
+      "detail": "25:00"
+    },
+    {
+      "id": "space",
+      "label": "Space key toggles start / pause",
+      "pass": true,
+      "detail": "25:00 → Space, 5 s → 24:55 → Space, 6 s → 24:55"
+    },
+    {
+      "id": "break",
+      "label": "Break tab switches to 05:00",
+      "pass": true,
+      "detail": "Break: 05:00"
+    },
+    {
+      "id": "focus",
+      "label": "Focus tab switches back to 25:00",
+      "pass": true,
+      "detail": "Focus: 25:00"
+    },
+    {
+      "id": "session",
+      "label": "Finishing a focus session adds 1 to \"sessions today\"",
+      "pass": true,
+      "detail": "0 → 1"
+    },
+    {
+      "id": "persist",
+      "label": "Session count persists after reload (localStorage)",
+      "pass": true,
+      "detail": "after reload: 1 (localStorage keys: 1)"
+    },
+    {
+      "id": "layout-360",
+      "label": "Fits at 360px wide (no sideways scroll, timer on screen)",
+      "pass": true,
+      "detail": "scrollWidth 360/360"
+    },
+    {
+      "id": "layout-1440",
+      "label": "Fits at 1440px wide (no sideways scroll, timer on screen)",
+      "pass": true,
+      "detail": "scrollWidth 1440/1440"
+    },
+    {
+      "id": "dark",
+      "label": "Dark UI (mean screen luminance < 0.18)",
+      "pass": true,
+      "detail": "luminance 0.018 (white = 1)"
+    },
+    {
+      "id": "no-external",
+      "label": "No external requests (no CDNs / frameworks)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "no-errors",
+      "label": "No JavaScript errors",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "externalRequests": [],
+  "errors": [],
+  "screenshots": {
+    "mobile": "mobile.png",
+    "desktop": "desktop.png"
+  },
+  "ms": 3445
+}

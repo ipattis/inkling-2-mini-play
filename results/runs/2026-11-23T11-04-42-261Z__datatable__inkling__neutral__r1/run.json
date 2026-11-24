@@ -1,0 +1,110 @@
+{
+  "runId": "2026-11-23T11-04-42-261Z__datatable__inkling__neutral__r1",
+  "batchId": "2026-11-23T11-04-42-261Z",
+  "at": "2026-11-23T13:07:51.102Z",
+  "taskId": "datatable",
+  "taskTitle": "Data explorer",
+  "model": "inkling",
+  "modelName": "Inkling 2 Mini",
+  "harness": "neutral",
+  "repeat": 1,
+  "status": "done",
+  "error": "",
+  "wallMs": 853070,
+  "durationMs": 852957,
+  "ttftMs": 4381,
+  "apiRequests": 14,
+  "agentTurns": 14,
+  "tokens": {
+    "input": 15293,
+    "cacheWrite": 0,
+    "cacheRead": 366129,
+    "output": 23783
+  },
+  "thinkTokens": 8585,
+  "contextPeak": 37837,
+  "tokPerSec": 30.19883257761124,
+  "waitMs": 65224,
+  "genMs": 787547,
+  "costUsd": 0,
+  "toolCounts": {
+    "list_files": 1,
+    "read_file": 2,
+    "write_file": 6,
+    "edit_file": 6,
+    "check_javascript": 3
+  },
+  "toolErrors": 2,
+  "files": [
+    {
+      "name": "app.js",
+      "bytes": 8535,
+      "lines": 300
+    },
+    {
+      "name": "data.json",
+      "bytes": 18948,
+      "lines": 1099
+    },
+    {
+      "name": "index.html",
+      "bytes": 2058,
+      "lines": 64
+    },
+    {
+      "name": "styles.css",
+      "bytes": 4290,
+      "lines": 223
+    },
+    {
+      "name": "test-logic.js",
+      "bytes": 118,
+      "lines": 3
+    }
+  ],
+  "grade": {
+    "score": 1,
+    "passed": 22,
+    "total": 22,
+    "failed": [],
+    "checks": {
+      "files": true,
+      "first-page": true,
+      "columns": true,
+      "sort-name": true,
+      "aria-sort": true,
+      "sort-name-desc": true,
+      "sort-orders": true,
+      "sort-date": true,
+      "sort-ties": true,
+      "sort-spend": true,
+      "pagination": true,
+      "page-size": true,
+      "search": true,
+      "search-resets": true,
+      "no-results": true,
+      "totals": true,
+      "hash-write": true,
+      "hash-restore": true,
+      "status-format": true,
+      "layout-360": true,
+      "no-external": true,
+      "no-errors": true
+    },
+    "screenshots": {
+      "desktop": "desktop.png",
+      "mobile": "mobile.png"
+    }
+  },
+  "config": {
+    "reasoningEffort": "medium",
+    "sampling": {
+      "temp": 1,
+      "topK": 50,
+      "topP": 1,
+      "minP": 0
+    },
+    "quant": "Q8_0"
+  },
+  "task": "data.json in the current directory holds 137 customer records (fields: id, name, city, signup, orders, spend). Build a single-page data explorer for it: index.html, styles.css and app.js. No frameworks, no CDNs, no build step. Load data.json with fetch, and do not modify it.\n\nTable\n- A <table> with one row per record and these columns, in this order: Name, City, Signup date, Orders, Spend.\n- Spend shows as US dollars with two decimals and thousands separators (e.g. $1,234.50). Dates show as YYYY-MM-DD.\n- A <tfoot> row shows the total Orders and total Spend of all rows that match the current search (not just the current page).\n\nSorting\n- Clicking a column header sorts by that column ascending; clicking the same header again sorts descending.\n- Numbers sort numerically, dates chronologically, and text case-insensitively.\n- Ties are ordered by id ascending, in both directions.\n- The sorted header has aria-sort=\"ascending\" or aria-sort=\"descending\".\n\nSearch and pages\n- A search box (<input type=\"search\">) filters rows. A row matches when the query appears, ignoring case, in its name or city.\n- 10 rows per page, with Previous and Next buttons and a page-size <select> offering 10, 25 and 50.\n- A status line reads exactly like \"Showing 11–20 of 137\" (with an en dash). It reflects the search, so 7 matches give \"Showing 1–7 of 7\".\n- With no matches, show \"No results\" and no data rows.\n- Changing the search or the page size goes back to page 1.\n\nURL state\n- The current sort column, direction, search, page and page size are kept in the URL hash, using the keys sort, dir, q, page and size, e.g. #sort=spend&dir=desc&q=ber&page=2&size=25. Sort values are name, city, signup, orders and spend.\n- Opening the page with such a hash restores that exact state.\n\nStyling\n- Clean and readable. On narrow screens the table scrolls sideways inside its own container instead of making the whole page scroll.\n\nWhen finished, reply with a one-line summary."
+}

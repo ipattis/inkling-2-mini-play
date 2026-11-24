@@ -1,0 +1,140 @@
+{
+  "spec": "spreadsheet",
+  "score": 1,
+  "passed": 21,
+  "total": 21,
+  "checks": [
+    {
+      "id": "files",
+      "label": "index.html, styles.css and app.js exist",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "no-eval",
+      "label": "No eval() / new Function() (own parser)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "grid",
+      "label": "8×12 grid of <input data-cell=\"A1\"…\"H12\">",
+      "pass": true,
+      "detail": "96 cells"
+    },
+    {
+      "id": "values",
+      "label": "Numbers and text show as entered",
+      "pass": true,
+      "detail": "A1=5 A2=hello"
+    },
+    {
+      "id": "precedence",
+      "label": "Arithmetic: precedence, parentheses, unary minus",
+      "pass": true,
+      "detail": "B1=14 B2=20 B3=5 B4=-6"
+    },
+    {
+      "id": "recalc",
+      "label": "Changing a cell updates everything that depends on it",
+      "pass": true,
+      "detail": "before C1=10 C2=11 · after A1=7 C1=14 C2=15"
+    },
+    {
+      "id": "case",
+      "label": "References are case-insensitive (=a1+1)",
+      "pass": true,
+      "detail": "C3=8 (want 8)"
+    },
+    {
+      "id": "functions",
+      "label": "SUM / AVG / MAX over ranges and argument lists",
+      "pass": true,
+      "detail": "E1=15 E2=3 E3=5 E4=13 E5=7"
+    },
+    {
+      "id": "empty-zero",
+      "label": "Empty cells count as 0",
+      "pass": true,
+      "detail": "F1=1 (want 1)"
+    },
+    {
+      "id": "float",
+      "label": "No floating-point noise (=0.1+0.2 → 0.3)",
+      "pass": true,
+      "detail": "F2=0.3"
+    },
+    {
+      "id": "div0",
+      "label": "#DIV/0! for division by zero",
+      "pass": true,
+      "detail": "F3=#DIV/0!"
+    },
+    {
+      "id": "ref",
+      "label": "#REF! for references outside A1:H12",
+      "pass": true,
+      "detail": "F4=#REF! F5=#REF!"
+    },
+    {
+      "id": "circ",
+      "label": "#CIRC! in every cell of a cycle (and self-reference)",
+      "pass": true,
+      "detail": "G1=#CIRC! G2=#CIRC! G3=#CIRC!"
+    },
+    {
+      "id": "err",
+      "label": "#ERR! for bad syntax and text in arithmetic",
+      "pass": true,
+      "detail": "G4=#ERR! G5=#ERR!"
+    },
+    {
+      "id": "propagate",
+      "label": "Errors propagate to dependent formulas",
+      "pass": true,
+      "detail": "G6=#DIV/0! (F3 is #DIV/0!)"
+    },
+    {
+      "id": "raw-on-focus",
+      "label": "Focused cell shows the raw formula, blurred shows the value",
+      "pass": true,
+      "detail": "focused \"=A1*2\", blurred \"14\""
+    },
+    {
+      "id": "enter",
+      "label": "Enter commits and moves to the cell below",
+      "pass": true,
+      "detail": "focus → H2, H1=42"
+    },
+    {
+      "id": "persist",
+      "label": "Sheet survives a reload (values and formulas)",
+      "pass": true,
+      "detail": "A1=7 C1=14 C2=15 E1=15, C1 raw \"=A1*2\""
+    },
+    {
+      "id": "clear",
+      "label": "\"Clear\" empties every cell and the saved sheet",
+      "pass": true,
+      "detail": "cells unlike an untouched one (\"\"): 0 after clear, 0 after reload; C1 raw \"\" / \"\""
+    },
+    {
+      "id": "no-external",
+      "label": "No external requests (no CDNs / libraries)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "no-errors",
+      "label": "No JavaScript errors",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "externalRequests": [],
+  "errors": [],
+  "screenshots": {
+    "desktop": "desktop.png"
+  },
+  "ms": 4913
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d0f1a" />
+  <title>Pomodoro — Focus Timer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="13" r="8"/>
+          <path d="M12 9v4l2.5 2.5"/>
+          <path d="M9 2h6"/>
+        </svg>
+        <span>Pomodoro</span>
+      </div>
+      <div class="date" id="date"></div>
+    </header>
+
+    <div class="card">
+      <div class="tabs" role="tablist" aria-label="Timer mode">
+        <button class="tab tab--focus is-active" id="tab-focus" role="tab" aria-selected="true" aria-controls="timer-panel" data-mode="focus">Focus</button>
+        <button class="tab tab--break" id="tab-break" role="tab" aria-selected="false" aria-controls="timer-panel" data-mode="break">Break</button>
+      </div>
+
+      <section class="timer" id="timer-panel" role="tabpanel" aria-labelledby="tab-focus">
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 320 320" width="320" height="320" aria-hidden="true">
+            <defs>
+              <linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff6b6b"/>
+                <stop offset="100%" stop-color="#ffa94d"/>
+              </linearGradient>
+              <linearGradient id="ring-grad-break" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#40c4ff"/>
+                <stop offset="100%" stop-color="#69db7c"/>
+              </linearGradient>
+            </defs>
+            <circle class="ring-track" cx="160" cy="160" r="140" />
+            <circle class="ring-progress" cx="160" cy="160" r="140" id="ring-progress" />
+          </svg>
+          <div class="time-display">
+            <div class="time" id="time" aria-live="off">25:00</div>
+            <div class="mode-label" id="mode-label">Focus time</div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button class="btn btn--primary" id="btn-toggle">Start</button>
+          <button class="btn btn--ghost" id="btn-reset">Reset</button>
+        </div>
+
+        <p class="hint">Press <kbd>Space</kbd> to start / pause</p>
+      </section>
+
+      <footer class="sessions">
+        <span class="sessions-label">Sessions completed today</span>
+        <span class="sessions-count" id="sessions-count">0</span>
+      </footer>
+    </div>
+
+    <footer class="app-footer">
+      <span class="dot" aria-hidden="true"></span> Stay focused. Take a breath.
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

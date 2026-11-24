@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Customer Data Explorer</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <h1>Customer data explorer</h1>
+
+    <div class="controls">
+      <div class="field">
+        <label for="search">Search name or city</label>
+        <input type="search" id="search" placeholder="e.g. berlin or quinn" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="size">Rows per page</label>
+        <select id="size">
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
+      </div>
+    </div>
+
+    <p id="status" class="status" role="status" aria-live="polite">Loading…</p>
+
+    <div class="table-wrap">
+      <table id="customers">
+        <thead>
+          <tr>
+            <th scope="col"><button type="button" data-key="name">Name</button></th>
+            <th scope="col"><button type="button" data-key="city">City</button></th>
+            <th scope="col"><button type="button" data-key="signup">Signup date</button></th>
+            <th scope="col" class="num"><button type="button" data-key="orders">Orders</button></th>
+            <th scope="col" class="num"><button type="button" data-key="spend">Spend</button></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+        <tfoot>
+          <tr id="totals">
+            <td>Total</td>
+            <td></td>
+            <td></td>
+            <td class="num" id="total-orders">0</td>
+            <td class="num" id="total-spend">$0.00</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <nav class="pager" aria-label="Pagination">
+      <button type="button" id="prev">Previous</button>
+      <button type="button" id="next">Next</button>
+    </nav>
+  </main>
+</body>
+</html>

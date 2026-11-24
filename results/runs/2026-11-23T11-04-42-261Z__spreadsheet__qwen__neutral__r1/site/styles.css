@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  background: #f3f5f9;
+  color: #24292f;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 14px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #d8dee7;
+}
+
+.bar h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.hint {
+  margin: 0;
+  font-size: 13px;
+  color: #6a737d;
+  flex: 1;
+}
+
+.hint code {
+  background: #eef1f6;
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 12px;
+}
+
+#clear {
+  font: inherit;
+  font-size: 14px;
+  padding: 6px 18px;
+  border: 1px solid #c2453a;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #c2453a;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+#clear:hover {
+  background: #c2453a;
+  color: #ffffff;
+}
+
+.grid {
+  padding: 20px;
+}
+
+table.sheet {
+  border-collapse: collapse;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(30, 40, 60, 0.12);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.sheet th {
+  background: #e9edf4;
+  color: #4a5568;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  padding: 6px 0;
+  min-width: 90px;
+  border: 1px solid #d3dae4;
+}
+
+.sheet th.corner {
+  min-width: 42px;
+  background: #dde3ec;
+}
+
+.sheet input {
+  width: 90px;
+  padding: 7px 8px;
+  font: inherit;
+  font-size: 14px;
+  border: 1px solid #d3dae4;
+  background: #ffffff;
+  color: #24292f;
+  text-align: right;
+  outline: none;
+  border-radius: 0;
+}
+
+.sheet input.text {
+  text-align: left;
+}
+
+.sheet input.error {
+  color: #c2453a;
+  font-weight: 600;
+}
+
+.sheet input:hover {
+  background: #f7f9fc;
+}
+
+.sheet input:focus {
+  border: 2px solid #2f6fed;
+  padding: 6px 7px;
+  background: #ffffff;
+}

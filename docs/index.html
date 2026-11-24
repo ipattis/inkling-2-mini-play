@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Three coding models, two harnesses, five tasks</title>
+  <meta name="description" content="Inkling 2 Mini and Qwen3.8 27B running locally on a MacBook Pro versus Claude Haiku 5.5 on Amazon Bedrock, inside Claude Code and a neutral agent loop, on five autograded web-dev tasks.">
+  <link rel="stylesheet" href="deck.css">
+</head>
+<body>
+  <div class="progress"><i id="progressBar"></i></div>
+  <nav class="dots" id="dots" aria-label="Slides"></nav>
+  <div class="counter" id="counter" aria-live="polite"></div>
+  <div class="tooltip" id="tooltip" role="tooltip"></div>
+
+  <main id="deck">
+
+    <!-- 1 ─────────────────────────────────────────────── title -->
+    <section class="slide title-slide" id="title" data-title="Title">
+      <div class="wrap">
+        <p class="kicker">A small, honest benchmark · November 2026</p>
+        <h1>Three coding models,<br>two harnesses, five tasks</h1>
+        <p class="lede">
+          <b>Inkling 2 Mini</b> and <b>Qwen3.8 27B</b> running locally on a MacBook Pro, against
+          <b>Claude Haiku 5.5</b> on Amazon Bedrock. Each model builds the same web apps inside
+          <b>Claude Code</b> and inside a deliberately plain <b>neutral agent loop</b>, and every result is
+          checked by an autograder in a headless browser.
+        </p>
+        <div class="model-keys" id="titleKeys"></div>
+        <p class="hint">Use <kbd>→</kbd> / <kbd>←</kbd>, or scroll · Code and data: <a href="https://github.com/ipattis/inkling-2-mini-play">github.com/ipattis/inkling-2-mini-play</a></p>
+      </div>
+    </section>
+
+    <!-- 2 ─────────────────────────────────────────────── tl;dr -->
+    <section class="slide" id="tldr" data-title="The short version">
+      <div class="wrap">
+        <h2>The short version</h2>
+        <div class="tiles" id="tldrTiles"></div>
+        <ul class="findings">
+          <li><b>Correctness didn't separate the models.</b> 28 of 30 runs passed every autograder check. The two misses were real bugs, both in Qwen's neutral-loop output.</li>
+          <li><b>Speed did.</b> To finish all five tasks in Claude Code, Inkling 2 Mini took <span data-k="inkCC"></span> of Haiku's time and Qwen3.8 27B took <span data-k="qwenCC"></span>. This compares local generation on one Mac against Anthropic's servers on Bedrock.</li>
+          <li><b>The harness mattered, but not the way I expected.</b> The neutral loop made Haiku <span data-k="haikuRatio"></span> as long and Qwen <span data-k="qwenRatio"></span>. It made Inkling <span data-k="inkRatio"></span> as long, that is, slower. Claude Code's overhead cost Haiku the most in relative terms; it didn't hand Haiku an advantage.</li>
+          <li><b>The grader needed fixing too.</b> Real outputs exposed 5 false negatives in my autograder, all from reasonable readings of the spec. Each fix shipped with a positive and a negative control, and every run was regraded.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3 ─────────────────────────────────────────────── setup -->
+    <section class="slide" id="setup" data-title="How it works">
+      <div class="wrap">
+        <h2>How a run works</h2>
+        <ol class="pipeline">
+          <li><span class="step">1</span><b>Task prompt</b><small>the same text for every model; some tasks also start from seeded files</small></li>
+          <li><span class="step">2</span><b>Harness</b><small>Claude Code (<code>claude -p</code>) or the neutral loop</small></li>
+          <li><span class="step">3</span><b>Model</b><small>llama.cpp on this Mac, or Bedrock</small></li>
+          <li><span class="step">4</span><b>Files on disk</b><small>index.html, styles.css, app.js…</small></li>
+          <li><span class="step">5</span><b>Autograder</b><small>headless Chromium, one check per stated requirement</small></li>
+        </ol>
+        <div class="two">
+          <div class="card">
+            <h3>What gets measured</h3>
+            <ul class="tight">
+              <li><b>Autograder score:</b> checks passed out of 15–22 per task</li>
+              <li><b>Time to complete:</b> wall clock from launch to exit</li>
+              <li><b>Cost:</b> Haiku at list price; $0 API spend for local runs (hardware and power not counted)</li>
+              <li><b>Tokens, API calls, tool errors, tok/s,</b> and time to first token</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Scheduling</h3>
+            <ul class="tight">
+              <li>A batch is a list of jobs: task × harness × repeat.</li>
+              <li>Within a job, Haiku runs alongside the first local model.</li>
+              <li><b>Only one local model uses the GPU at a time</b>, so they don't slow each other down by sharing memory bandwidth.</li>
+              <li>A run is stopped after 45 minutes.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="note">A live dashboard (<code>npm start</code>) shows every run as it happens: a metrics panel above the page being built.</p>
+      </div>
+    </section>
+
+    <!-- 4 ─────────────────────────────────────────────── models -->
+    <section class="slide" id="models" data-title="The models">
+      <div class="wrap">
+        <h2>The models</h2>
+        <div class="cards3">
+          <article class="card model-card" data-model="inkling">
+            <header><span class="sw"></span><h3>Inkling 2 Mini</h3><span class="badge">local</span></header>
+            <p class="by">Thinking Machines · Apache-2.0 · released Nov 20, 2026</p>
+            <dl>
+              <dt>Size</dt><dd>26.4B parameters, 3.4B active per token (about 5.4B effective with the loops)</dd>
+              <dt>Architecture</dt><dd>Looped mixture of experts: 24 layers, with the middle 12 run three times using shared weights. Each token goes to 8 of 128 experts; attention mixes local and global layers.</dd>
+              <dt>Context</dt><dd>up to 1M tokens; text and image input</dd>
+              <dt>Here</dt><dd><code>ggml-org/Inkling-2-Mini-GGUF</code> Q8_0, 27.8 GB, 128K context</dd>
+              <dt>Settings</dt><dd>reasoning effort <b>medium</b> (template default: high); temperature 1.0 from its <code>generation_config.json</code></dd>
+            </dl>
+          </article>
+          <article class="card model-card" data-model="qwen">
+            <header><span class="sw"></span><h3>Qwen3.8 27B</h3><span class="badge">local</span></header>
+            <p class="by">Qwen · Apache-2.0 · August 2026</p>
+            <dl>
+              <dt>Size</dt><dd>27B parameters, dense, with a multi-token-prediction head</dd>
+              <dt>Architecture</dt><dd>64 layers in a hybrid pattern: 16 × (3 Gated DeltaNet linear-attention blocks + 1 gated attention block)</dd>
+              <dt>Context</dt><dd>262K native, extensible to 1M; text, image and video input</dd>
+              <dt>Here</dt><dd><code>unsloth/Qwen3.8-27B-GGUF</code> Q8_0, 29.0 GB, 128K context</dd>
+              <dt>Settings</dt><dd>reasoning effort <b>medium</b> (template default: xhigh); temperature 1.0, top_p 0.95, top_k 20, as the model card recommends</dd>
+              <dt>Note</dt><dd>its model card reports agentic coding benchmarks run <i>in the Claude Code harness</i></dd>
+            </dl>
+          </article>
+          <article class="card model-card" data-model="haiku">
+            <header><span class="sw"></span><h3>Claude Haiku 5.5</h3><span class="badge">hosted</span></header>
+            <p class="by">Anthropic · on Amazon Bedrock (global endpoint)</p>
+            <dl>
+              <dt>Price</dt><dd>$0.10 per million input tokens and $0.50 per million output, for prompts up to 100K tokens</dd>
+              <dt>Context</dt><dd>1M tokens; up to 128K output</dd>
+              <dt>Thinking</dt><dd>adaptive, on by default; effort <b>medium</b> (its default)</dd>
+              <dt>Here</dt><dd>Claude Code's Bedrock provider; the neutral loop uses <code>global.anthropic.claude-haiku-5-5</code> on <code>bedrock-runtime</code></dd>
+              <dt>Note</dt><dd>Claude Code gives it a longer system prompt written for Claude models (see “Two harnesses”)</dd>
+            </dl>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 ─────────────────────────────────────────────── machine -->
+    <section class="slide" id="machine" data-title="The machine">
+      <div class="wrap">
+        <h2>The machine</h2>
+        <div class="two wide-left">
+          <div class="card spec">
+            <h3>MacBook Pro (Mac16,5)</h3>
+            <dl>
+              <dt>Chip</dt><dd>Apple M4 Max</dd>
+              <dt>CPU</dt><dd>16 cores (12 performance, 4 efficiency)</dd>
+              <dt>GPU</dt><dd>40 cores (Metal)</dd>
+              <dt>Memory</dt><dd>128 GB unified, 546 GB/s bandwidth (Apple's spec for this chip)</dd>
+              <dt>OS</dt><dd>macOS 26.7.2</dd>
+            </dl>
+            <h3 class="mt">Software</h3>
+            <dl>
+              <dt>Inference</dt><dd>llama.cpp <code>llama-server</code> b12633 with Metal, flash attention and KV-cache reuse. Both models stay loaded (about 57 GB of weights); one runs at a time.</dd>
+              <dt>Harness</dt><dd>Claude Code 2.1.329 (headless); the neutral loop runs on Node 26</dd>
+              <dt>Grader</dt><dd>Playwright 1.65 with headless Chromium</dd>
+            </dl>
+          </div>
+          <div>
+            <h3 class="center-h">Generation speed <small>(median tok/s across tasks, Claude Code harness)</small></h3>
+            <div class="tiles vertical" id="speedTiles"></div>
+            <p class="note">Local decoding is bound by memory bandwidth: a 27B dense model at 8-bit reads about 29 GB of weights per token. Inkling's mixture of experts touches far fewer weights per token, so it runs about 2× faster than Qwen on the same chip.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 ─────────────────────────────────────────────── tasks -->
+    <section class="slide" id="tasks" data-title="The tasks">
+      <div class="wrap">
+        <h2>Five tasks, each a different skill</h2>
+        <div class="task-grid" id="taskGrid"></div>
+        <p class="note">Every task is a single-page app built from three files, with no frameworks, CDNs or build step. The prompts state each requirement explicitly, so each one can be checked mechanically.</p>
+      </div>
+    </section>
+
+    <!-- 7 ─────────────────────────────────────────────── grader -->
+    <section class="slide" id="grader" data-title="The autograder">
+      <div class="wrap">
+        <h2>The autograder, and how it was kept honest</h2>
+        <div class="two">
+          <div class="card">
+            <h3>How it grades</h3>
+            <ul class="tight">
+              <li>It serves each output folder and drives it in <b>headless Chromium</b>, blocking every non-local request.</li>
+              <li>Each stated requirement gets one check. The checks are written so that <b>one defect fails one check</b>, not several.</li>
+              <li>Timers run on Playwright's <b>fake clock</b>, so "60 seconds" or a full 25-minute session take milliseconds and are exact.</li>
+              <li>Expected answers come from the task's own data. The data explorer's expected sort orders, for example, are computed from <code>data.json</code>.</li>
+            </ul>
+            <div class="mini-stats" id="graderStats"></div>
+          </div>
+          <div class="card">
+            <h3>Negative controls</h3>
+            <p>Each grader is run against a known-good reference app, and against copies of it with one deliberate defect each. Every case must fail <i>exactly</i> the checks it should:</p>
+            <ul class="tight small">
+              <li><b>Spreadsheet:</b> uses <code>eval</code> · floating-point noise · no <code>#CIRC!</code> · Clear keeps formulas</li>
+              <li><b>Data explorer:</b> orders sorted as text · ties by id descending · hash not restored · totals for the current page only</li>
+              <li><b>Bug fix:</b> the untouched seed must fail exactly the 7 bug checks</li>
+              <li><b>Markdown:</b> raw HTML rendered · <code>javascript:</code> links allowed · no autosave</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card fn">
+          <h3>Real outputs still found 5 false negatives</h3>
+          <p>Each one came from a reasonable reading of the spec, and each fix shipped with a positive control (the model's real pattern must pass) and a negative control (the real defect must still fail):</p>
+          <ol class="fnlist">
+            <li>a session counter labeled only by <code>aria-label</code></li>
+            <li>empty spreadsheet cells shown as “0”</li>
+            <li>sort buttons inside the <code>&lt;th&gt;</code>, the accessible pattern</li>
+            <li>a table that starts out sorted, so the first click flips it</li>
+            <li>“No results” shown next to a “Showing 0–0 of 0” line</li>
+          </ol>
+          <p class="note">Every run in this deck was regraded with the final grader.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 ─────────────────────────────────────────────── harnesses -->
+    <section class="slide" id="harnesses" data-title="Two harnesses">
+      <div class="wrap">
+        <h2>Two harnesses</h2>
+        <p class="sub">Claude Code is the real product, but it was built for Claude models. The neutral loop asks how the models do when nobody's harness is home turf.</p>
+        <div class="table-wrap">
+          <table class="cmp">
+            <thead><tr><th></th><th>Claude Code</th><th>Neutral loop</th></tr></thead>
+            <tbody>
+              <tr><th>System prompt</th><td>Claude Code's own: 6,913 characters for models it doesn't recognise, <b>9,770 for Haiku 5.5</b></td><td>3 lines, identical for everyone</td></tr>
+              <tr><th>Tools</th><td>Bash, Read, Write, Edit, Glob, Grep, TodoWrite. Bash is limited to <code>ls</code>, <code>wc</code> and <code>node --check</code>.</td><td><code>list_files</code>, <code>read_file</code>, <code>write_file</code>, <code>edit_file</code>, <code>check_javascript</code></td></tr>
+              <tr><th>Permissions</th><td>file edits auto-approved; other commands denied</td><td>everything sandboxed to the run folder</td></tr>
+              <tr><th>Output limit</th><td>32K per response for unknown models, 128K for Haiku</td><td>32K for everyone</td></tr>
+              <tr><th>Effort</th><td>pinned to medium with <code>--effort medium</code></td><td>medium</td></tr>
+              <tr><th>Local API</th><td>Anthropic <code>/v1/messages</code> on llama-server</td><td>OpenAI <code>/v1/chat/completions</code> on llama-server, with native tool calling</td></tr>
+              <tr><th>Haiku API</th><td>Claude Code → Bedrock</td><td>Messages API → Bedrock <code>bedrock-runtime</code></td></tr>
+              <tr><th>Extras</th><td>mid-conversation system reminders, a todo list, context management</td><td>none</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">The prompt sizes, output limits and effort values come from capturing the requests Claude Code actually sends, with a local endpoint standing in for the model.</p>
+      </div>
+    </section>
+
+    <!-- 9 ─────────────────────────────────────────────── neutral loop -->
+    <section class="slide" id="neutral" data-title="Neutral loop design">
+      <div class="wrap">
+        <h2>Neutral loop design</h2>
+        <div class="two wide-right">
+          <div>
+            <h3>The whole system prompt</h3>
+            <pre class="prompt">You are an autonomous software engineer working in a project directory.
+Use the provided tools to inspect, create and edit files; paths are relative to the project directory.
+Work until the task is fully complete, then reply with a one-line summary and stop calling tools.</pre>
+            <h3 class="mt">The loop</h3>
+            <ol class="loop">
+              <li>Send the conversation and the tools to the model, streaming.</li>
+              <li>No tool calls? The model is done; record its summary.</li>
+              <li>Otherwise run each tool call, validating its arguments and keeping it inside the run folder.</li>
+              <li>Append the results and repeat, up to <b>60 turns</b> and <b>32K output tokens per response</b>.</li>
+              <li>A call cut off at the output limit isn't run; the model is told to split large writes.</li>
+              <li>Network errors, 429s and 5xx responses are retried up to 3 times with backoff.</li>
+            </ol>
+          </div>
+          <div>
+            <h3>Five tools</h3>
+            <table class="tools">
+              <tr><td><code>list_files</code></td><td>recursive listing, up to 200 entries</td></tr>
+              <tr><td><code>read_file</code></td><td>the file's text, truncated at 100K characters</td></tr>
+              <tr><td><code>write_file</code></td><td>create or overwrite a file</td></tr>
+              <tr><td><code>edit_file</code></td><td>replace one exact match; fails if there are 0 or more than 1</td></tr>
+              <tr><td><code>check_javascript</code></td><td><code>node --check</code>, a syntax check only</td></tr>
+            </table>
+            <h3 class="mt">Each model through its native API</h3>
+            <table class="tools">
+              <tr><td>Local</td><td>OpenAI-style chat completions on llama-server, using each chat template's own tool-call format. Reasoning goes back as <code>reasoning_content</code>; KV-cache reuse is automatic.</td></tr>
+              <tr><td>Haiku</td><td>Messages API on Bedrock, <code>effort: medium</code> and adaptive thinking. Thinking blocks go back unchanged; cache breakpoints sit on the system prompt and the newest message.</td></tr>
+            </table>
+            <p class="note">It emits the same event stream as Claude Code's <code>--output-format stream-json</code>, so time, tokens and cost are measured by identical code in both harnesses. The whole loop is about 300 lines: <code>harness/neutral-agent.mjs</code>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 ────────────────────────────────────────────── fairness -->
+    <section class="slide" id="fairness" data-title="Fairness controls">
+      <div class="wrap">
+        <h2>Keeping it fair</h2>
+        <div class="fair-grid">
+          <div class="card"><h3>Effort parity, verified</h3><p>A capture of real requests showed Claude Code sending <b>effort: high</b> to models it doesn't recognise and <b>medium</b> to Haiku 5.5. llama-server honors the per-request value. So the Claude Code runs pin <code>--effort medium</code>, and the capture confirms all three models now get medium.</p></div>
+          <div class="card"><h3>Model-card sampling</h3><p>llama-server is started with each model card's recommended sampling, so both harnesses get it. Its own defaults (temperature 0.8, top_k 40, min_p 0.05) differ from both cards.</p></div>
+          <div class="card"><h3>One local model at a time</h3><p>Both local models share one GPU and its memory bandwidth, so they never run at the same time. Haiku runs remotely, alongside the first local model.</p></div>
+          <div class="card"><h3>Same inputs</h3><p>The same prompt, seed files and grader for everyone. Within a harness every model gets the same tools and limits.</p></div>
+          <div class="card"><h3>Integration fixes for the local models</h3><p>Fixes needed to get Claude Code working with the local models:</p><ul class="tight small"><li>Bash and TodoWrite added to the tool list, because llama.cpp's tool grammar returns a 500 on unknown tool names</li><li>Qwen's chat template patched to accept mid-conversation system messages</li><li>cloud-provider settings removed so requests go to the local server</li></ul></div>
+          <div class="card"><h3>Regraded at the end</h3><p>The grader changed during the study (see the 5 false negatives). Every archived run was regraded with the final version, so all the numbers come from one grader.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 ────────────────────────────────────────────── correctness -->
+    <section class="slide" id="correctness" data-title="Results: correctness">
+      <div class="wrap">
+        <h2>Results: correctness</h2>
+        <p class="sub">Autograder checks passed, with time to complete. One run per cell.</p>
+        <div class="table-wrap"><table class="matrix" id="matrix"></table></div>
+        <p class="note" id="matrixNote"></p>
+      </div>
+    </section>
+
+    <!-- 12 ────────────────────────────────────────────── time -->
+    <section class="slide" id="time" data-title="Results: time">
+      <div class="wrap">
+        <h2>Results: time to complete</h2>
+        <p class="sub">Each task, per model, in both harnesses. <b>Log scale</b>: each gridline is a step of about 3–5×.</p>
+        <div class="legend" id="timeLegend"></div>
+        <div class="two charts" id="timeCharts"></div>
+      </div>
+    </section>
+
+    <!-- 13 ────────────────────────────────────────────── harness effect -->
+    <section class="slide" id="effect" data-title="Results: harness effect">
+      <div class="wrap">
+        <h2>Results: the harness effect</h2>
+        <div class="two charts">
+          <figure class="card chart-card">
+            <figcaption><b>Neutral-loop time ÷ Claude Code time</b><small>total over the five tasks; left of 1× means faster in the neutral loop</small></figcaption>
+            <div id="ratioChart"></div>
+          </figure>
+          <figure class="card chart-card">
+            <figcaption><b>Local model's total time as a multiple of Haiku's</b><small>○ Claude Code&nbsp;&nbsp;● neutral loop</small></figcaption>
+            <div id="dumbbellChart"></div>
+          </figure>
+        </div>
+        <ul class="findings">
+          <li><b>Haiku and Qwen did less work in the neutral loop.</b> Haiku went from 39 to 17 API calls and from 89k to 49k output tokens; Qwen went from 52 to 32 calls and from 68k to 42k tokens.</li>
+          <li><b>Inkling did more.</b> It made fewer calls (72 vs 91) but wrote 98k output tokens instead of 80k, about twice as much on the Pomodoro and data-explorer tasks, mostly extra polishing passes.</li>
+          <li><b>A small prompt speeds up the first token.</b> Median time to first token fell from 16.2 s to 3.9 s for Inkling and from 23.8 s to 6.3 s for Qwen. Haiku went from 3.9 s to 3.2 s.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 14 ────────────────────────────────────────────── gallery -->
+    <section class="slide" id="gallery" data-title="What they built">
+      <div class="wrap">
+        <h2>What they built</h2>
+        <div class="tabs" id="galleryTabs" role="tablist"></div>
+        <div class="gallery" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <!-- 15 ────────────────────────────────────────────── caveats -->
+    <section class="slide" id="caveats" data-title="Caveats">
+      <div class="wrap">
+        <h2>Caveats</h2>
+        <div class="fair-grid">
+          <div class="card"><h3>One run per cell</h3><p>Model output varies from run to run. The timing and harness differences are suggestive, not settled; Inkling's neutral-loop slowdown in particular could be noise. Repeats would settle it.</p></div>
+          <div class="card"><h3>Saturated tasks</h3><p>Single-page apps from explicit specs turned out to be well within all three models' reach. Separating them on quality needs bigger, multi-file tasks or work inside an existing codebase.</p></div>
+          <div class="card"><h3>Hardware, not just models</h3><p>Local times reflect one M4 Max. Haiku's times reflect Anthropic's servers on Bedrock. Local decoding is bound by memory bandwidth, so hardware with more bandwidth would run the same local models faster.</p></div>
+          <div class="card"><h3>Cost isn't the full cost</h3><p>“$0” is API spend only. The Mac, its power, and the hour-plus of compute per local run aren't priced in.</p></div>
+          <div class="card"><h3>No test execution</h3><p>Neither harness let a model run arbitrary code; <code>node --check</code> was the most it could run. Qwen spent much of one run building a test harness it wasn't allowed to execute.</p></div>
+          <div class="card"><h3>Grader iteration</h3><p>The grader was corrected after seeing real outputs. Each fix was justified from the spec and paired with a control, and everything was regraded. Still, a grader written by one person carries that person's reading of the spec.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 16 ────────────────────────────────────────────── reproduce -->
+    <section class="slide" id="reproduce" data-title="Reproduce it">
+      <div class="wrap">
+        <h2>Reproduce it</h2>
+        <div class="two">
+          <div>
+            <pre class="cmds"><span># model weights, SHA-256 checked (needs llama.cpp b12633+ in ~/.local/llama.cpp)</span>
+scripts/fetch-models.sh
+npm install
+
+<span># live dashboard: http://localhost:4100</span>
+npm start
+
+<span># grader negative controls (all tasks)</span>
+node grader/selftest.mjs
+
+<span># regrade everything, then rebuild this deck's data</span>
+node grader/regrade.mjs
+node scripts/export-pages.mjs</pre>
+          </div>
+          <div class="card">
+            <h3>What's in the repo <small><a href="https://github.com/ipattis/inkling-2-mini-play">github.com/ipattis/inkling-2-mini-play</a></small></h3>
+            <ul class="tight">
+              <li><code>tasks/</code>: prompts and seed files</li>
+              <li><code>grader/</code>: specs, reference apps, self-test</li>
+              <li><code>harness/neutral-agent.mjs</code>: the neutral loop</li>
+              <li><code>server.mjs</code>, <code>public/</code>: dashboard and comparison page</li>
+              <li><code>templates/</code>: Qwen's patched chat template, next to the original</li>
+              <li><code>docs/</code>: this deck</li>
+            </ul>
+            <h3 class="mt">Next</h3>
+            <ul class="tight">
+              <li>3+ repeats per cell, for variance</li>
+              <li>multi-file and existing-codebase tasks</li>
+              <li>blind visual ratings, using the dashboard's blind gallery</li>
+              <li>a backend option allowing safe test execution</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <noscript><p class="noscript">The charts and tables need JavaScript; the text slides read fine without it.</p></noscript>
+  <script src="data.js"></script>
+  <script src="deck.js"></script>
+</body>
+</html>

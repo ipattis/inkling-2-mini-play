@@ -1,0 +1,109 @@
+{
+  "runId": "2026-11-23T11-04-42-261Z__spreadsheet__qwen__neutral__r1",
+  "batchId": "2026-11-23T11-04-42-261Z",
+  "at": "2026-11-23T12:29:56.711Z",
+  "taskId": "spreadsheet",
+  "taskTitle": "Mini spreadsheet",
+  "model": "qwen",
+  "modelName": "Qwen3.8 27B",
+  "harness": "neutral",
+  "repeat": 1,
+  "status": "done",
+  "error": "",
+  "wallMs": 1445254,
+  "durationMs": 1445200,
+  "ttftMs": 7419,
+  "apiRequests": 12,
+  "agentTurns": 12,
+  "tokens": {
+    "input": 12198,
+    "cacheWrite": 0,
+    "cacheRead": 179353,
+    "output": 20175
+  },
+  "thinkTokens": 8095,
+  "contextPeak": 24757,
+  "tokPerSec": 14.658772121667445,
+  "waitMs": 68657,
+  "genMs": 1376309,
+  "costUsd": 0,
+  "toolCounts": {
+    "write_file": 9,
+    "edit_file": 4,
+    "check_javascript": 3,
+    "read_file": 1
+  },
+  "toolErrors": 0,
+  "files": [
+    {
+      "name": "app.js",
+      "bytes": 12691,
+      "lines": 469
+    },
+    {
+      "name": "index.html",
+      "bytes": 533,
+      "lines": 19
+    },
+    {
+      "name": "styles.css",
+      "bytes": 1770,
+      "lines": 119
+    },
+    {
+      "name": "test-harness.js",
+      "bytes": 57,
+      "lines": 2
+    }
+  ],
+  "grade": {
+    "score": 0.9523809523809523,
+    "passed": 20,
+    "total": 21,
+    "failed": [
+      {
+        "id": "raw-on-focus",
+        "label": "Focused cell shows the raw formula, blurred shows the value",
+        "detail": "focused \"=A1*2\", blurred \"=A1*2\""
+      }
+    ],
+    "checks": {
+      "files": true,
+      "no-eval": true,
+      "grid": true,
+      "values": true,
+      "precedence": true,
+      "recalc": true,
+      "case": true,
+      "functions": true,
+      "empty-zero": true,
+      "float": true,
+      "div0": true,
+      "ref": true,
+      "circ": true,
+      "err": true,
+      "propagate": true,
+      "raw-on-focus": false,
+      "enter": true,
+      "persist": true,
+      "clear": true,
+      "no-external": true,
+      "no-errors": true
+    },
+    "screenshots": {
+      "desktop": "desktop.png"
+    }
+  },
+  "config": {
+    "reasoningEffort": "medium",
+    "sampling": {
+      "temp": 1,
+      "topK": 20,
+      "topP": 0.95,
+      "minP": 0,
+      "presencePenalty": 0
+    },
+    "quant": "Q8_0"
+  },
+  "task": "Build a mini spreadsheet as a single-page web app in the current directory: index.html, styles.css and app.js. No frameworks, no CDNs, no build step, and no eval() or new Function(): write your own formula parser.\n\nGrid\n- 8 columns (A–H) by 12 rows (1–12), with column letters and row numbers as headers.\n- Every cell is an <input> with a data-cell attribute holding its address, e.g. <input data-cell=\"B3\">.\n- A cell that is not being edited shows its computed value. When focused it shows the raw content that was entered (e.g. \"=A1+1\").\n- An edit is committed on Enter or when the cell loses focus. Enter also moves focus to the cell below.\n\nValues and formulas\n- A cell holds a number, text, or a formula starting with \"=\".\n- Formulas support numbers, cell references (case-insensitive: A1 or a1), + - * / with the usual precedence, unary minus, parentheses, and the functions SUM, AVG and MAX. Functions take ranges (A1:A5), comma-separated arguments (SUM(A1, B2, 3)), or a mix.\n- Empty cells count as 0. Using a text cell in arithmetic is an error.\n- Results show no floating-point noise: =0.1+0.2 shows 0.3.\n- Changing a cell recalculates every cell that depends on it, directly or through other cells.\n\nErrors (shown in the cell instead of a value)\n- #DIV/0! for division by zero.\n- #REF! for a reference outside A1:H12.\n- #CIRC! for a circular reference, shown in every cell of the cycle.\n- #ERR! for anything else that can't be parsed or evaluated.\n- A formula that uses a cell holding an error also shows an error.\n\nAlso\n- The sheet is saved in localStorage and restored on reload.\n- A \"Clear\" button empties every cell and the saved sheet.\n- Clean, readable styling.\n\nWhen finished, reply with a one-line summary."
+}

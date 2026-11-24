@@ -1,0 +1,364 @@
+/* ---------- Design tokens ---------- */
+:root {
+  --bg-0: #0a0d16;
+  --bg-1: #101425;
+  --surface: rgba(255, 255, 255, 0.045);
+  --surface-hi: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.09);
+  --border-hi: rgba(255, 255, 255, 0.16);
+
+  --text: #eef1f8;
+  --text-dim: #9aa3b8;
+  --text-faint: #667089;
+
+  --focus-a: #ff7a59;
+  --focus-b: #ffb25e;
+  --break-a: #37d6a0;
+  --break-b: #58b6ff;
+
+  /* Active mode accent (overridden in JS) */
+  --accent-a: var(--focus-a);
+  --accent-b: var(--focus-b);
+  --accent-soft: rgba(255, 122, 89, 0.16);
+
+  --ring-track: rgba(255, 255, 255, 0.08);
+  --radius-lg: 28px;
+  --radius-md: 16px;
+  --radius-pill: 999px;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.55), 0 4px 18px rgba(0, 0, 0, 0.35);
+  --font: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+body[data-mode="break"] {
+  --accent-a: var(--break-a);
+  --accent-b: var(--break-b);
+  --accent-soft: rgba(55, 214, 160, 0.14);
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  background: radial-gradient(120% 90% at 50% 0%, var(--bg-1) 0%, var(--bg-0) 62%) fixed, var(--bg-0);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 4vw, 40px);
+  overflow-x: hidden;
+}
+
+/* Ambient glow that follows the active accent */
+.bg-glow {
+  position: fixed;
+  inset: auto 0 0 0;
+  height: 62vh;
+  background:
+    radial-gradient(58% 68% at 50% 100%, var(--accent-soft) 0%, transparent 72%);
+  filter: blur(18px);
+  pointer-events: none;
+  z-index: -1;
+  transition: background 0.6s ease;
+}
+
+/* ---------- Card ---------- */
+.app {
+  width: 100%;
+  max-width: 440px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  padding: clamp(20px, 4.5vw, 34px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 3.5vw, 26px);
+}
+
+/* ---------- Header ---------- */
+.app__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  color: var(--accent-a);
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  transition: color 0.5s ease, background 0.5s ease;
+}
+
+.brand__name {
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.mode-badge {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-a);
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  transition: color 0.5s ease, background 0.5s ease;
+}
+
+/* ---------- Tabs ---------- */
+.tabs {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+}
+
+.tabs__btn {
+  position: relative;
+  z-index: 1;
+  appearance: none;
+  background: none;
+  border: 0;
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text-dim);
+  padding: 9px 0;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.tabs__btn[aria-selected="true"] { color: var(--text); }
+
+.tabs__indicator {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--accent-a), var(--accent-b));
+  box-shadow: 0 6px 20px var(--accent-soft), inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  transition: transform 0.32s cubic-bezier(0.34, 1.3, 0.5, 1), background 0.5s ease;
+}
+
+.tabs[data-active="break"] .tabs__indicator { transform: translateX(100%); }
+
+/* ---------- Timer ring ---------- */
+.timer {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  aspect-ratio: 1;
+}
+
+.ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  display: block;
+}
+
+.ring__track,
+.ring__progress {
+  fill: none;
+  stroke-width: 9;
+}
+
+.ring__track { stroke: var(--ring-track); }
+
+.ring__stop { transition: stop-color 0.5s ease; }
+.ring__stop--a { stop-color: var(--accent-a); }
+.ring__stop--b { stop-color: var(--accent-b); }
+
+.ring__progress {
+  stroke: url(#ringGrad);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.35s linear, opacity 0.4s ease;
+  filter: drop-shadow(0 0 8px var(--accent-soft));
+}
+
+.timer.is-paused .ring__progress { opacity: 0.45; }
+.timer.is-done .ring__progress { animation: pulse-ring 1.4s ease-in-out infinite; }
+
+@keyframes pulse-ring {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.timer__readout {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.timer__time {
+  font-size: clamp(46px, 15vw, 62px);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 34px var(--accent-soft);
+}
+
+.timer__state {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* ---------- Controls ---------- */
+.controls {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+}
+
+.btn {
+  appearance: none;
+  font: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-size: 15.5px;
+  font-weight: 650;
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: transform 0.12s ease, background 0.25s ease,
+    border-color 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active { transform: translateY(1px) scale(0.99); }
+
+.btn--primary {
+  color: #10121c;
+  background: linear-gradient(135deg, var(--accent-a), var(--accent-b));
+  border-color: transparent;
+  box-shadow: 0 10px 28px var(--accent-soft);
+}
+
+.btn--primary:hover { filter: brightness(1.07); }
+
+.btn--ghost {
+  color: var(--text-dim);
+  background: var(--surface);
+  min-width: 108px;
+}
+
+.btn--ghost:hover {
+  color: var(--text);
+  background: var(--surface-hi);
+  border-color: var(--border-hi);
+}
+
+.btn:focus-visible,
+.tabs__btn:focus-visible {
+  outline: 2px solid var(--accent-a);
+  outline-offset: 2px;
+}
+
+/* ---------- Sessions ---------- */
+.sessions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.sessions__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--text-faint);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.sessions__dot.is-warm {
+  background: linear-gradient(135deg, var(--accent-a), var(--accent-b));
+  box-shadow: 0 0 12px var(--accent-soft);
+}
+
+.sessions__text strong {
+  color: var(--text);
+  font-weight: 650;
+}
+
+/* ---------- Hint ---------- */
+.hint {
+  margin: 0;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--text-faint);
+}
+
+kbd {
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  padding: 2px 7px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 380px) {
+  .controls { grid-template-columns: 1fr; }
+  .btn--ghost { min-width: 0; }
+  .brand__name { font-size: 16px; }
+}
+
+@media (min-width: 1000px) {
+  .app { max-width: 460px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tabs__indicator,
+  .ring__progress,
+  .btn { transition: none; }
+  .timer.is-done .ring__progress { animation: none; }
+}
